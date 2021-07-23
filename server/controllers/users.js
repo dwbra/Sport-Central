@@ -25,7 +25,7 @@ export const updateUser = async (req, res) => {
     const { id: _id } = req.params;
     const data = req.body;
     try {
-        if (!Mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send(`No ad with that ${_id}`);
+        if (!Mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send(`No user with that ${_id}`);
         const updatedUser = await User.findByIdAndUpdate(_id, { ...data, _id}, { new : true });
         res.json(updatedUser);
     } catch {
@@ -35,7 +35,7 @@ export const updateUser = async (req, res) => {
 
 export const deleteUser = async (req, res) => {
     const { id } = req.params;
-    if (!Mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No ad with that ${id}`);
+    if (!Mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No user with that ${id}`);
     await User.findByIdAndDelete(id);
     res.json({message: 'Ad deleted successfully.'});
 };

@@ -10,8 +10,12 @@ const userSchema = mongoose.Schema ({
     lastCoordinates: {
         lat: Number,
         lng: Number
+    },
+    createdAt: {
+        type: Date,
+        default: new Date()
     }
-})
+});
 
 const User = mongoose.model('Users', userSchema);
 

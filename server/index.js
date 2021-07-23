@@ -5,6 +5,9 @@ import dotenv from 'dotenv';
 
 import adRoutes from './routes/ads.js';
 import userRoutes from './routes/users.js';
+import messageRoutes from './routes/messages.js';
+import gameRoutes from './routes/games.js';
+import sportRoutes from './routes/sports.js';
 
 //initiate express to be able to call methods from.
 const app = express();
@@ -17,6 +20,9 @@ app.use(cors());
 //use express to set the route path for app post routes
 app.use('/ads', adRoutes);
 app.use('/users', userRoutes);
+app.use('/messages', messageRoutes);
+app.use('/games', gameRoutes);
+app.use('/sports', sportRoutes);
 
 const PORT = process.env.PORT || 5000;
 
