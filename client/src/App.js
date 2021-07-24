@@ -1,3 +1,4 @@
+import IsLoggedIn from "./components/auth/IsLoggedIn";
 import React, {useState, useEffect} from 'react'
 import {
   BrowserRouter as Router,
@@ -21,7 +22,7 @@ function App() {
   }, [currentId, dispatch])
 
   return (
-    <div className="App">
+    <div>
       <Container maxWidth="lg">
       <Typography variant="h2" align="center">Sport Central</Typography>
       <Router>
@@ -37,7 +38,8 @@ function App() {
         </Switch>
       </Router>
         <AppBar position="static" color="inherit">
-        </AppBar>
+        <IsLoggedIn/>
+        </AppBar> 
     </Container>
     </div>
   );

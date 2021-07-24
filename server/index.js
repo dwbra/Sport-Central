@@ -4,6 +4,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 
 import adRoutes from './routes/ads.js';
+import authRoutes from './routes/auth.js';
 import userRoutes from './routes/users.js';
 import messageRoutes from './routes/messages.js';
 import gameRoutes from './routes/games.js';
@@ -19,6 +20,7 @@ app.use(cors());
 
 //use express to set the route path for app post routes
 app.use('/ads', adRoutes);
+app.use('/auth', authRoutes);
 app.use('/users', userRoutes);
 app.use('/messages', messageRoutes);
 app.use('/games', gameRoutes);
