@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 const adSchema = mongoose.Schema ({
     creator: String,
     teamName: String,
+    name: String,
     filled: [Boolean],
     sport: String,
     compOrCasual: String,
