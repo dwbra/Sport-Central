@@ -12,7 +12,7 @@ export const getAds = async (req, res) => {
 
 export const createAd = async (req, res) => {
     const ad = req.body;
-    const newAdListing = new AdListing({ ...ad, creator: req.userID, createdAt: new Date().toISOString() });
+    const newAdListing = new AdListing({ ...ad, creator: req.userId, createdAt: new Date().toISOString() });
     try {   
         await newAdListing.save();
         res.status(201).json(newAdListing);

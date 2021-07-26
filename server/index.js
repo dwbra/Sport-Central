@@ -21,7 +21,7 @@ app.use(cors());
 //use express to set the route path for app post routes
 app.use('/ads', adRoutes);
 app.use('/auth', authRoutes);
-app.use('/users', userRoutes);
+app.use('/user', userRoutes);
 app.use('/messages', messageRoutes);
 app.use('/games', gameRoutes);
 app.use('/sports', sportRoutes);

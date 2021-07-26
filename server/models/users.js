@@ -1,21 +1,11 @@
 import mongoose from 'mongoose';
 
-const userSchema = mongoose.Schema ({
-    userID: String,
-    name: String,
-    icon: String,
-    adSearchHistory: [Number],
-    activeAdIDs: [Number],
-    activeGameIDs: [Number],
-    lastCoordinates: {
-        lat: Number,
-        lng: Number
-    },
-    createdAt: {
-        type: Date,
-        default: new Date()
-    }
-});
+const userSchema = mongoose.Schema({
+    name: { type: String, required:  true },
+    email: { type: String, required: true },
+    password: { type: String, required: true },
+    id: { type: String },
+  });
 
 const User = mongoose.model('Users', userSchema);
 

@@ -8,7 +8,11 @@
     "start": "nodemon index.js"
   },
   "dependencies": {
+<<<<<<< HEAD
     "axios": "^0.21.1",
+=======
+    "bcryptjs": "^2.4.3",
+>>>>>>> 1c6da0640bb7c01154c25a1fd58789355af987a4
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
