@@ -8,7 +8,6 @@ import {createAd, updateAd} from '../../actions/ads.js'
 const Form = ({currentId, setCurrentId}) => {
 
     const [adData, setAdData] = useState({
-        creator: '',
         teamName: '',
         filled: false,
         sport: '',
@@ -18,6 +17,7 @@ const Form = ({currentId, setCurrentId}) => {
         skillLevel: '',
         mixedTeam: false
     })
+    const user = JSON.parse(localStorage.getItem('profile'))
     const ad = useSelector((state) => currentId ? state.ads.find((a) => a._id === currentId) : null)
     const dispatch = useDispatch()
 
@@ -29,11 +29,21 @@ const Form = ({currentId, setCurrentId}) => {
         e.preventDefault()
 
         if(currentId) {
-            dispatch(updateAd(currentId, adData))
+            dispatch(updateAd(currentId, {...adData, name: user?.result?.name}))
         } else {
-            dispatch(createAd(adData))
+            dispatch(createAd({...adData, name: user?.result?.name}))
         }
         clear()
+    }
+
+    if(!user?.result?.name) {
+        return(
+            <Paper>
+                <Typography variant="h6" align="center">
+                    Please sign in to create a sports team ad
+                </Typography>
+            </Paper>
+        )
     }
 
     const clear = () => {
@@ -56,14 +66,6 @@ const Form = ({currentId, setCurrentId}) => {
             <form autoComplete="off" noValidate onSubmit={handleSubmit}>
                 <Typography variant="h6">{currentId ? 'Editing' : 'Creating'} An Add</Typography>
                 <TextField 
-                    name="creator" 
-                    variant="outlined" 
-                    label="Creator" 
-                    fullWidth
-                    value={adData.creator}
-                    onChange={(e) => setAdData({...adData, creator: e.target.value})}
-                />
-                <TextField 
                     name="teamName" 
                     variant="outlined" 
                     label="Team Name" 
@@ -78,6 +80,14 @@ const Form = ({currentId, setCurrentId}) => {
                     fullWidth
                     value={adData.sport}
                     onChange={(e) => setAdData({...adData, sport: e.target.value})}
+                />
+                <TextField 
+                    name="skillLevel" 
+                    variant="outlined" 
+                    label="Skill Level" 
+                    fullWidth
+                    value={adData.skillLevel}
+                    onChange={(e) => setAdData({...adData, skillLevel: e.target.value})}
                 />
                 <div>
                     {/* <FileBase 
