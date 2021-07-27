@@ -5,7 +5,7 @@ import GoogleLogout from 'react-google-login';
 const GoogleLogoutButton = () => {
 
     const responseSuccessGoogle = () => {
-        //console.log("Logout", localStorage.getItem('email'));
+        console.log("Logout", localStorage.getItem('email'));
         var formData = new FormData();
         formData.append("email", localStorage.getItem('email'))
         axios({
@@ -24,7 +24,7 @@ const GoogleLogoutButton = () => {
   
     return (
         <GoogleLogout
-            clientId="460704800898-2f1vtr6mialaotgf3rp9ft04fs2bdf34.apps.googleusercontent.com"
+            clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
             buttonText="Logout"
             onSuccess={responseSuccessGoogle}
             onFailure={err => console.log('fail', err)}
