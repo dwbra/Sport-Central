@@ -14,9 +14,9 @@ const Home = () => {
         )
     } else {
         return (
-            <div>
-                <h1>This is the Home page</h1>
-            </div>
+            <Typography variant="h2">
+            This is the Home Page
+            </Typography>
         )
     }
 

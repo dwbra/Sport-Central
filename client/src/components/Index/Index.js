@@ -1,5 +1,5 @@
 import React from 'react'
-import {Button} from '@material-ui/core'
+import {Button, Typography, Paper} from '@material-ui/core'
 import {Link} from 'react-router-dom'
 
 const Index = () => {
@@ -7,16 +7,19 @@ const Index = () => {
 
     if (!user) {
         return (
-            <div>
-                <h1>Welcome to Sport Central, this is the index page</h1>
+            <Paper>
+                <Typography variant="h2">
+                This is the Index Page
+                </Typography>
                 <Button component={Link} to="/auth" variant="contained" color="primary">Sign Up/Log In</Button>
-            </div>
+            </Paper>
+
         )
     } else {
         return (
-            <div>
-                <h1>This is the index page</h1>
-            </div>
+            <Typography variant="h2">
+            This is the Index Page
+            </Typography>
         )
     }
 }

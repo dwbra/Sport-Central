@@ -7,20 +7,18 @@ const Inbox = () => {
     if(!user) {
         return(
             <Paper>
-                <Typography variant="h6" align="center">
+                <Typography variant="h2" align="center">
                     Please sign in to view your inbox
                 </Typography>
             </Paper>
         )
     } else {
         return (
-            <div>
-                <h1>This is the inbox page</h1>
-            </div>
+            <Typography variant="h2">
+            This is the Inbox Page
+            </Typography>
         )
     }
-
-
 }
 
 export default Inbox
