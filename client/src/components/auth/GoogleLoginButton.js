@@ -4,11 +4,12 @@ import axios from "axios";
 
 const GoogleLoginButton = () => {
     const responseSuccessGoogle = (response) => {
-        console.log("profileObj ",response.profileObj);
+        //console.log("profileObj ",response.profileObj)
+        //console.log("token",response.tokenId)
         axios({
             method: 'post',
             url: 'http://localhost:5000/auth/gLogin',
-            data: response.profileObj,
+            data: response,
         }).then(serverResponse => {
             console.log("Susses ",serverResponse)
             localStorage.setItem('jwt', serverResponse.data.user.jwt)
@@ -22,8 +23,9 @@ const GoogleLoginButton = () => {
     return (
         <div>
             <GoogleLogin 
-                clientId="460704800898-2f1vtr6mialaotgf3rp9ft04fs2bdf34.apps.googleusercontent.com"
+                clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
                 buttonText="Login"
+                //responseType='id_token'
                 onSuccess={(r) => {responseSuccessGoogle(r)}} 
                 onFailure={err => console.log('fail', err)} 
             />
