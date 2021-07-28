@@ -3,7 +3,6 @@ import {Button, Toolbar,TextField} from '@material-ui/core'
 import {useDispatch } from 'react-redux'
 import { getAds } from '../../actions/ads.js'
 import LocationFinder from '../LocationFinder/LocationFinder'
-import distanceCalc from '../LocationFinder/distanceCalc';
 import Ads from '../Ads/Ads.js'
 
 
@@ -18,25 +17,26 @@ const FindATeam = () => {
 
 
     const [searchComps, setsearchComps] = useState({
-        locationFinderVis: 'hidden',
-        adsVis: 'hidden',
+        locationFinderVis: false,
+        adsVis: false,
     });
 
     const [searchFilters, setsearchFilters] = useState({
         lat: 0,
         lng: 0,
+        distance: 100,
     });
 
     function setLocationFinderVis() {
-        if (searchComps.locationFinderVis === 'hidden') {
+        if (searchComps.locationFinderVis === false) {
             setsearchComps(searchComps => ({
                 ...searchComps,
-                locationFinderVis: 'visible'
+                locationFinderVis: true
             }))
         } else {
             setsearchComps(searchComps => ({
                 ...searchComps,
-                locationFinderVis: 'hidden'
+                locationFinderVis: false
             })) 
         }
     }
@@ -50,22 +50,43 @@ const FindATeam = () => {
         })) 
         setsearchComps(searchComps => ({
             ...searchComps,
-            adsVis: 'visible'
+            adsVis: true
         })) 
     }
+
+    function updateDistance(e) {
+      const re = /^[0-9\b]+$/;
+      if (e.target.value === '' || re.test(e.target.value)) {
+            setsearchFilters(searchFilters => ({
+            ...searchFilters,
+            distance: e.target.value,
+        })) 
+      }
+    }
+
 
     return (
         <div>
             <Toolbar>
                 <Button onClick={setLocationFinderVis} variant="contained" color="secondary">Set Search Location</Button>
-                <TextField id="Search-Distance" label="Search Distance in km"/>
+                <TextField 
+                    style={{margin: '20px'}}
+                    id="Search-Distance" 
+                    label="Search Distance in km" 
+                    onChange={(e) => updateDistance(e)}
+                    value={searchFilters.distance}
+                    />
             </Toolbar>
-            <div style={{ visibility: searchComps.locationFinderVis}}>
-                <LocationFinder lat={-33.8688} lng={151.2093} setLocation={locationBack}/>
-            </div>
-            <div style={{ visibility: searchComps.adsVis}}>
-                <Ads setCurrentId={setCurrentId} />
-            </div>
+
+            <LocationFinder trigger={searchComps.locationFinderVis} lat={-33.8688} lng={151.2093} setLocation={locationBack}/>
+
+            {(() => {
+                if (searchComps.adsVis === true) {
+                    return (
+                        <Ads setCurrentId={setCurrentId} lat={searchFilters.lat} lng={searchFilters.lng} distance={searchFilters.distance}/>
+                    )
+                }
+            })()}
         </div>
     );
 };

@@ -7,7 +7,6 @@ import {
 import {Container} from '@material-ui/core'
 import {useDispatch } from 'react-redux'
 import { getAds } from './actions/ads.js'
-import Ads from './components/Ads/Ads.js'
 import Form from './components/Form/Form.js'
 import Navbar from './components/Navbar/Navbar.js'
 import Home from './components/Home/Home.js'
