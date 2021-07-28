@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import {Link} from 'react-router-dom'
 import {AppBar, Typography, Avatar, Button, Toolbar} from '@material-ui/core'
 import { useDispatch } from 'react-redux'
+import decode from 'jwt-decode'
 import { useHistory, useLocation } from 'react-router-dom'
 import { LOGOUT } from '../../constants/actionTypes';
 
@@ -11,9 +12,6 @@ const Navbar = () => {
     const dispatch = useDispatch()
     const history = useHistory()
     const location = useLocation()
-
-    console.log(`The user is ${user}`)
-    console.log(user)
 
     const logout = () => {
         dispatch({type: LOGOUT})
@@ -27,6 +25,12 @@ const Navbar = () => {
         const token = user?.token
 
         // JWT
+        if(token) {
+            const decodedToken = decode(token)
+
+            if(decodedToken.exp * 1000 < new Date().getTime()) logout()
+        }
+
 
         setUser(JSON.parse(localStorage.getItem('profile')))
     }, [location])
