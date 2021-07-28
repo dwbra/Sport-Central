@@ -6,6 +6,7 @@ import { deleteAd } from '../../../actions/ads.js'
 
 const Ad = ( { ad, setCurrentId } ) => {
     const dispatch = useDispatch()
+    const user = JSON.parse(localStorage.getItem('profile'));
 
     return (
         <Card>
@@ -21,12 +22,17 @@ const Ad = ( { ad, setCurrentId } ) => {
                 <Typography variant="body2" color="textSecondary">{ad.skillLevel}</Typography>
             </div>
             <CardActions>
+            {(user?.result?.googleId === ad?.creator || user?.result?._id === ad?.creator) && (
                 <Button style={{color: 'black'}} size="small" onClick={() => setCurrentId(ad._id)}>
-                    Update
+                Update
                 </Button>
+             
+            )}
+            {(user?.result?.googleId === ad?.creator || user?.result?._id === ad?.creator) && (
                 <Button style={{color: 'red'}} size="small" onClick={() => dispatch(deleteAd(ad._id))}>
                     Delete
                 </Button>
+            )}   
             </CardActions>
         </Card>
     )

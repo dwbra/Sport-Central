@@ -18,7 +18,7 @@ const Ads = ({ currentId ,setCurrentId}) => {
     }
 
     return (
-        !ads.length ? <CircularProgress /> : (
+        // !ads.length ? <CircularProgress /> : (
             <Grid container alignItems="stretch" spacing={3}>
                 {ads.map((ad) => (
                     <Grid key={ad.id} item xs={12} sm={6}>
@@ -26,7 +26,7 @@ const Ads = ({ currentId ,setCurrentId}) => {
                     </Grid>
                 ))}
             </Grid>
-        )
+        // )
     )
 }
 
