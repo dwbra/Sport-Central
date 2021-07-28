@@ -33,9 +33,11 @@ export const updateAd = (id, ad) => async (dispatch) => {
 
 export const deleteAd = (id) => async (dispatch) => {
     try {
-        await api.deleteAd(id)
+        if (window.confirm('Are you sure?')) {
+            await api.deleteAd(id)
 
-        dispatch({type: DELETE, payload: id})
+            dispatch({type: DELETE, payload: id})
+        }
     } catch (error) {
         console.log(error)
     }

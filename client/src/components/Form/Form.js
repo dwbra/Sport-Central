@@ -64,7 +64,7 @@ const Form = ({currentId, setCurrentId}) => {
     return (
         <Paper>
             <form autoComplete="off" noValidate onSubmit={handleSubmit}>
-                <Typography variant="h6">{currentId ? 'Editing' : 'Creating'} An Add</Typography>
+                <Typography variant="h2">{currentId ? 'Editing' : 'Create'} An Ad</Typography>
                 <TextField 
                     name="teamName" 
                     variant="outlined" 

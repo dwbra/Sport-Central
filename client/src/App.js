@@ -12,6 +12,8 @@ import Form from './components/Form/Form.js'
 import Navbar from './components/Navbar/Navbar.js'
 import Home from './components/Home/Home.js'
 import Auth from './components/auth/Auth.js'
+import Index from './components/Index/Index.js'
+import Inbox from './components/Inbox/Inbox.js'
 
 function App() {
 
@@ -23,19 +25,22 @@ function App() {
   }, [currentId, dispatch])
 
 
-  return (
+    return (
       <Router>
         <Container>
           <Navbar />
           <Switch>
-            <Route path="/" exact component={Home}/>
+            <Route path="/" exact component={Index}/>
+            <Route path="/home" exact component={Home}/>
             <Route path="/auth" exact component={Auth}/>
+            <Route path="/inbox" exact component={Inbox}/>
             <Route path="/create" exact component={() => <Form currentId={currentId} setCurrentId={setCurrentId} />}/>
             <Route path="/explore" exact component={() => <Ads setCurrentId={setCurrentId} />}/>
           </Switch>
         </Container>
       </Router>
   );
+
 }
 
 export default App;

@@ -1,5 +1,5 @@
 import React from 'react'
-import {Grid, CircularProgress, Paper, Typography} from '@material-ui/core'
+import {Grid, Paper, Typography} from '@material-ui/core'
 import {useSelector} from 'react-redux'
 import Ad from './Ad/Ad.js'
 
@@ -18,7 +18,8 @@ const Ads = ({ currentId ,setCurrentId}) => {
     }
 
     return (
-        // !ads.length ? <CircularProgress /> : (
+            <>
+            <Typography variant="h2">Find an Ad</Typography>
             <Grid container alignItems="stretch" spacing={3}>
                 {ads.map((ad) => (
                     <Grid key={ad.id} item xs={12} sm={6}>
@@ -26,7 +27,7 @@ const Ads = ({ currentId ,setCurrentId}) => {
                     </Grid>
                 ))}
             </Grid>
-        // )
+            </>
     )
 }
 
