@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux'
 import {createAd, updateAd} from '../../actions/ads.js'
 import LocationFinder from '../LocationFinder/LocationFinder'
 import SportsList from '../SportsList/SportsList'
+import MultiSlider from '../MultiSlider/MultiSlider'
 
 
 const Form = ({currentId, setCurrentId}) => {
@@ -22,7 +23,7 @@ const Form = ({currentId, setCurrentId}) => {
         clubName: '',
         leagueName: '',
         skillLevel: '',
-        mixedTeam: false,
+        teamGender: '',
         gamesLocation: {lat: [0], lng: [0]},
     })
     const user = JSON.parse(localStorage.getItem('profile'))
@@ -71,6 +72,11 @@ const Form = ({currentId, setCurrentId}) => {
         })
     }
 
+    function teamGenderBack(Gender) {
+        setAdData({...adData, 
+            teamGender: Gender,
+        })
+    }
 
     if(!user?.result?.name) {
         return(
@@ -93,7 +99,7 @@ const Form = ({currentId, setCurrentId}) => {
             clubName: '',
             leagueName: '',
             skillLevel: '',
-            mixedTeam: false,
+            teamGender: '',
             gamesLocation: {lat: [0], lng: [0]},
         })
     }
@@ -111,6 +117,12 @@ const Form = ({currentId, setCurrentId}) => {
                     value={adData.teamName}
                     onChange={(e) => setAdData({...adData, teamName: e.target.value})}
                 />
+
+                {/* Mixed ? */}
+                <div style={{maxWidth: '50%', margin: 'auto'}}>
+                    <MultiSlider setAsking={teamGenderBack} valuesArray={["All Female", "Mixed", "All Male"]} defaultValue={1} title={"Team Gender"}/>
+                </div>
+
                 <TextField 
                     name="skillLevel" 
                     variant="outlined" 
