@@ -23,7 +23,6 @@ function App() {
     dispatch(getAds())
   }, [currentId, dispatch])
 
-
   return (
       <Router>
         <Container>

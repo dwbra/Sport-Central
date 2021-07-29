@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
 import {createAd, updateAd} from '../../actions/ads.js'
 import LocationFinder from '../LocationFinder/LocationFinder'
+import SportsList from '../SportsList/SportsList'
 
 
 const Form = ({currentId, setCurrentId}) => {
@@ -64,6 +65,13 @@ const Form = ({currentId, setCurrentId}) => {
         clear()
     }
 
+    function sportBack(sport) {
+        setAdData({...adData, 
+            sport: sport,
+        })
+    }
+
+
     if(!user?.result?.name) {
         return(
             <Paper>
@@ -94,6 +102,7 @@ const Form = ({currentId, setCurrentId}) => {
         <Paper>
             <form autoComplete="off" noValidate onSubmit={handleSubmit}>
                 <Typography variant="h6">{currentId ? 'Editing' : 'Creating'} An Add</Typography>
+                <SportsList setSport={sportBack}/>
                 <TextField 
                     name="teamName" 
                     variant="outlined" 
@@ -101,14 +110,6 @@ const Form = ({currentId, setCurrentId}) => {
                     fullWidth
                     value={adData.teamName}
                     onChange={(e) => setAdData({...adData, teamName: e.target.value})}
-                />
-                <TextField 
-                    name="sport" 
-                    variant="outlined" 
-                    label="Sport" 
-                    fullWidth
-                    value={adData.sport}
-                    onChange={(e) => setAdData({...adData, sport: e.target.value})}
                 />
                 <TextField 
                     name="skillLevel" 

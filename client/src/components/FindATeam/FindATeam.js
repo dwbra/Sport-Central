@@ -3,6 +3,7 @@ import {Button, Toolbar,TextField} from '@material-ui/core'
 import {useDispatch } from 'react-redux'
 import { getAds } from '../../actions/ads.js'
 import LocationFinder from '../LocationFinder/LocationFinder'
+import SportsList from '../SportsList/SportsList'
 import Ads from '../Ads/Ads.js'
 
 
@@ -25,6 +26,7 @@ const FindATeam = () => {
         lat: 0,
         lng: 0,
         distance: 100,
+        sport: "All",
     });
 
     function setLocationFinderVis() {
@@ -54,6 +56,14 @@ const FindATeam = () => {
         })) 
     }
 
+    function sportBack(sport) {
+        setsearchFilters(searchFilters => ({
+            ...searchFilters,
+            sport: sport
+        })) 
+    }
+
+
     function updateDistance(e) {
       const re = /^[0-9\b]+$/;
       if (e.target.value === '' || re.test(e.target.value)) {
@@ -67,6 +77,7 @@ const FindATeam = () => {
 
     return (
         <div>
+            <SportsList setSport={sportBack}/>
             <Toolbar>
                 <Button onClick={setLocationFinderVis} variant="contained" color="secondary">Set Search Location</Button>
                 <TextField 
@@ -83,7 +94,14 @@ const FindATeam = () => {
             {(() => {
                 if (searchComps.adsVis === true) {
                     return (
-                        <Ads setCurrentId={setCurrentId} lat={searchFilters.lat} lng={searchFilters.lng} distance={searchFilters.distance}/>
+                        <Ads 
+                            setCurrentId={setCurrentId} 
+                            lat={searchFilters.lat} 
+                            lng={searchFilters.lng} 
+                            distance={searchFilters.distance} 
+                            sport={searchFilters.sport}
+                            
+                        />
                     )
                 }
             })()}
