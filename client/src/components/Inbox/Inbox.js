@@ -1,5 +1,6 @@
 import React from 'react'
-import { Paper, Typography} from '@material-ui/core'
+import {Button, Typography, Paper} from '@material-ui/core'
+import {Link} from 'react-router-dom'
 
 const Inbox = () => {
     const user = JSON.parse(localStorage.getItem('profile'))
@@ -10,6 +11,7 @@ const Inbox = () => {
                 <Typography variant="h2" align="center">
                     Please sign in to view your inbox
                 </Typography>
+                <Button component={Link} to="/auth" variant="contained" color="primary">Sign Up/Log In</Button>
             </Paper>
         )
     } else {

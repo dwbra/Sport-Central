@@ -1,8 +1,18 @@
 import React from 'react'
-import {Paper, Typography} from '@material-ui/core'
+import {Paper, Typography, Grid} from '@material-ui/core'
+import {useSelector} from 'react-redux'
+import Ad from '../Ads/Ad/Ad.js'
+import Ads from '../Ads/Ads.js'
+import { useHistory } from 'react-router'
 
-const Home = () => {
+const Home = ( setCurrentId) => {
+    const {ads } = useSelector((state) => state.ads)
+    const history = useHistory()
     const user = JSON.parse(localStorage.getItem('profile'))
+    const result = ads.filter(function(ad) {
+        return user?.result?.googleId === ad?.creator || user?.result?._id === ad?.creator
+    })
+    console.log(result)
 
     if(!user) {
         return(
@@ -14,12 +24,19 @@ const Home = () => {
         )
     } else {
         return (
-            <Typography variant="h2">
-            This is the Home Page
-            </Typography>
+            <>
+            <Typography variant="h4">Your Ads</Typography>
+            {/* <Ads /> */}
+            <Grid container alignItems="stretch" spacing={3}>
+                {result.map((ad) => (
+                    <Grid key={ad._id} item xs={12} sm={6}>
+                        <Ad ad={ad} setCurrentId={setCurrentId}/>
+                    </Grid>
+                ))}
+            </Grid>
+            </>
         )
     }
-
 }
 
 export default Home

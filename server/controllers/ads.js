@@ -1,4 +1,5 @@
 import Mongoose from 'mongoose';
+import adListing from '../models/adListings.js';
 import AdListing from '../models/adListings.js'
 
 export const getAds = async (req, res) => {
@@ -9,6 +10,18 @@ export const getAds = async (req, res) => {
         res.status(404).json({ message: error });
     }
 };
+
+export const getAd = async (req,res) => {
+    const {id} = req.params
+
+    try {
+        const ad = await adListing.findById(id)
+
+        res.status(200).json(ad)
+    } catch (error) {
+        res.status(404).json({ message: error });
+    }
+}
 
 export const createAd = async (req, res) => {
     const ad = req.body;

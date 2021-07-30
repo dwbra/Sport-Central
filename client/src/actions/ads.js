@@ -1,5 +1,5 @@
-  import { FETCH_ALL, CREATE, UPDATE, DELETE } from '../constants/actionTypes';
-import * as api from '../api'
+import { FETCH_ALL, CREATE, UPDATE, DELETE, FETCH_AD } from '../constants/actionTypes';
+import * as api from '../api/index.js'
 
 // Action Creators
 export const getAds = () => async (dispatch) => {
@@ -7,6 +7,16 @@ export const getAds = () => async (dispatch) => {
         const {data} = await api.getAds()
 
         dispatch({ type: FETCH_ALL, payload: data })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const getAd = (id) => async (dispatch) => {
+    try {
+        const {data} = await api.fetchAd(id)
+
+        dispatch({ type: FETCH_AD, payload: data })
     } catch (error) {
         console.log(error)
     }

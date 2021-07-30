@@ -1,18 +1,20 @@
-import { FETCH_ALL, CREATE, UPDATE, DELETE} from '../constants/actionTypes.js';
+import { FETCH_ALL, FETCH_AD, CREATE, UPDATE, DELETE} from '../constants/actionTypes.js';
 
-export const reducer = (ads = [], action) => {
+const initialState = { ads:[] }
+
+export default (state = initialState, action) => {
     switch (action.type) {
         case FETCH_ALL: 
-            return action.payload
+            return {...state, ads: action.payload }
         case CREATE: 
-            return [...ads, action.payload]
+            return { ...state, ads: [...state.ads, action.payload] }
         case UPDATE: 
-            return ads.map((ad) => (ad._id === action.payload._id ? action.payload : ad))
+            return { ...state, ads: state.ads.map((ad) => (ad._id === action.payload._id ? action.payload : ad)) }
         case DELETE:
-            return ads.filter((ad) => ad._id !== action.payload)
+            return { ...state, ads: state.ads.filter((ad) => ad._id !== action.payload) }
+        case FETCH_AD:
+            return { ...state, ad: action.payload }
         default: 
-            return ads
+            return state
     }
 }
-
-export default reducer
