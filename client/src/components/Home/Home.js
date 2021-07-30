@@ -3,11 +3,9 @@ import {Paper, Typography, Grid} from '@material-ui/core'
 import {useSelector} from 'react-redux'
 import Ad from '../Ads/Ad/Ad.js'
 import Ads from '../Ads/Ads.js'
-import { useHistory } from 'react-router'
 
-const Home = ( setCurrentId) => {
+const Home = ({setCurrentId}) => {
     const {ads } = useSelector((state) => state.ads)
-    const history = useHistory()
     const user = JSON.parse(localStorage.getItem('profile'))
     const result = ads.filter(function(ad) {
         return user?.result?.googleId === ad?.creator || user?.result?._id === ad?.creator

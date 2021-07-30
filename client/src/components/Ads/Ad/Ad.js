@@ -14,8 +14,10 @@ const Ad = ( { ad, setCurrentId } ) => {
         history.push(`/explore/${ad._id}`)
     }
 
-    const updateAd = (id) => {
-        id = setCurrentId(ad._id)
+    const updateAd = (e) => {
+        e.preventDefault()
+
+        setCurrentId(ad._id)
         history.push(`/create`)
     }
 

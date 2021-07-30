@@ -8,6 +8,7 @@ import { useHistory } from 'react-router-dom';
 import {signin, signup} from '../../actions/auth.js'
 import Icon from './icon';
 import { AUTH } from '../../constants/actionTypes';
+import CONFIG from '../config.json'
 
 const initialState = {
     firstName: '',
@@ -88,7 +89,7 @@ const Auth = () => {
                             {isSignup ? 'Sign Up' : 'Sign In'}
                         </Button>
                         <GoogleLogin
-                            clientId="721614720553-kmfol5rs8ajb8f5o0mg656nhapnm4mtc.apps.googleusercontent.com"
+                            clientId={CONFIG.GOOGLE_CLIENT_ID}
                             render={(renderProps) => (
                             <Button 
                             color="primary" 
