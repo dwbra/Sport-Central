@@ -3,7 +3,7 @@
 
 //To call
 <div style={{maxWidth: '50%', margin: 'auto'}}>
-    <MultiSlider setAsking={teamGenderBack} valuesArray={["All Female", "Mixed", "All Male"]} defaultValue={1} title={"Team Gender"}/>
+    <MultiSlider setAsking={teamGenderBack} valuesArray={["All Female", "Mixed", "All Male"]} defaultValue={1} title={"Team Gender"} index={}/>
 </div>
 
 // sending array of selections is "valuesArray"
@@ -23,7 +23,7 @@
 // calls setLocationFinderVis() to set trigger in this case searchComps.locationFinderVis to true. can be done however you want.
 
 //place LocationFinder at the bottom of the component list so that is appears on top. 
-<LocationFinder trigger={searchComps.locationFinderVis} lat={-33.8688} lng={151.2093} setLocation={locationBack}/>
+<LocationFinder trigger={searchComps.locationFinderVis} lat={-33.8688} lng={151.2093} setLocation={locationBack} index={searchComps.locationIndex}/>
 
 // Sending lat and Lng for the starting point of the maps location
 // sending the get info back function in "setLocation"
