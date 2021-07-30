@@ -38,22 +38,25 @@ const Navbar = () => {
     return (
         <AppBar position="static" color="inherit">
             <div>
-                <Typography component={Link} to="/" variant="h2" align="center">Sport Central</Typography>
+                <Typography component={Link} to={user ? '/home' : '/'} variant="h2" align="center">Sport Central</Typography>
             </div>
             <Toolbar>
                 {user ? (
                     <div>
                        <Avatar alt={user?.result.name} src={user?.result.imageUrl}>{user?.result.name.charAt(0)}</Avatar>
                        <Typography variant="h6">{user.result.name}</Typography>
-                       <Button variant="contained" color="secondary" onClick={logout}>Logout</Button>
+                       <Button component={Link} to="/home" variant="contained" color="secondary">Home</Button>
                        <Button component={Link} to="/create" variant="contained" color="secondary">Create</Button>
                        <Button component={Link} to="/explore" variant="contained" color="secondary">Explore</Button>
+                       <Button component={Link} to="/inbox" variant="contained" color="secondary">Inbox</Button>
+                       <Button component={Link} to="/find" variant="contained" color="secondary">Find</Button>
+                       <Button variant="contained" color="secondary" onClick={logout}>Logout</Button>
                     </div>                     
                 ) : (
                     <div>
-                        <Button component={Link} to="/auth" variant="contained" color="primary">Sign In</Button>
-                        <Button component={Link} to="/create" variant="contained" color="primary">Create</Button>
-                        <Button component={Link} to="/explore" variant="contained" color="primary">Explore</Button>
+                        {/* <Button component={Link} to="/auth" variant="contained" color="primary">Sign In</Button> */}
+                        {/* <Button component={Link} to="/create" variant="contained" color="primary">Create</Button>
+                        <Button component={Link} to="/explore" variant="contained" color="primary">Explore</Button> */}
                     </div>
                 )}
             </Toolbar>
