@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux'
 import { deleteAd } from '../../../actions/ads.js'
 import { useHistory } from 'react-router'
 
-const Ad = ( { ad, setCurrentId } ) => {
+const Ad = ( { ad, setCurrentId, distance} ) => {
     const dispatch = useDispatch()
     const user = JSON.parse(localStorage.getItem('profile'));
     const history = useHistory()
@@ -28,6 +28,9 @@ const Ad = ( { ad, setCurrentId } ) => {
                 <Typography variant="h4">{ad.teamName}</Typography>
                 <Typography variant="h6">{ad.sport}</Typography>
                 <Typography variant="body2">{moment(ad.createdAt).fromNow()}</Typography>
+                <Typography variant="body1">distance away {distance} km</Typography>
+            </div>
+            <div>
                 <Typography variant="body2" color="textSecondary">{ad.skillLevel}</Typography>
             </div>
         </ButtonBase>

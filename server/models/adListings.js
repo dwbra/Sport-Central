@@ -11,7 +11,7 @@ const adSchema = mongoose.Schema ({
     clubName: String,
     leagueName: String,
     skillLevel: String,
-    mixedTeam: Boolean,
+    teamGender: String,
     playerGenders: [String],
     gamesDateTime: [Date],
     gamesLength: [Number],
