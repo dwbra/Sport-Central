@@ -12,6 +12,7 @@ import Navbar from './components/Navbar/Navbar.js'
 import Home from './components/Home/Home.js'
 import Auth from './components/auth/Auth.js'
 import FindATeam from './components/FindATeam/FindATeam.js'
+import MessageIndex from './components/Message/MessageIndex.js';
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
             <Route path="/auth" exact component={Auth}/>
             <Route path="/create" exact component={() => <Form currentId={currentId} setCurrentId={setCurrentId} />}/>
             <Route path="/explore" exact component={FindATeam}/>
+            <Route path="/message" exact component={MessageIndex}/>
             {/* <Route path="/explore" exact component={() => <Ads setCurrentId={setCurrentId} />}/> */}
           </Switch>
         </Container>

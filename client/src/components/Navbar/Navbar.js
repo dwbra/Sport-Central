@@ -54,6 +54,7 @@ const Navbar = () => {
                         <Button component={Link} to="/auth" variant="contained" color="primary">Sign In</Button>
                         <Button component={Link} to="/create" variant="contained" color="primary">Create</Button>
                         <Button component={Link} to="/explore" variant="contained" color="primary">Explore</Button>
+                        <Button component={Link} to="/message" variant="contained" color="primary">Message</Button>
                     </div>
                 )}
             </Toolbar>
