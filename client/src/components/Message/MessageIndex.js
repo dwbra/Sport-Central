@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react';
 import Dashboard from './Dashboard';
+import { ContactsProvider } from './Providers/ContactsProvider';
 
 function MessageIndex() {
 
@@ -12,7 +13,10 @@ function MessageIndex() {
     const id = userEmail
 
     const dashboard = (
-        <Dashboard id={id} />
+        <ContactsProvider>
+            <Dashboard id={id} />
+        </ContactsProvider>
+
     )
 
     return (
