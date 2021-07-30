@@ -10,6 +10,7 @@ API.interceptors.request.use((req) => {
     return req
 })
 
+export const fetchAd = (id) => API.get(`/ads/${id}`)
 export const getAds = () => API.get('/ads');
 export const createAd = (newAd) => API.post('/ads', newAd); 
 export const updateAd = (id, updatedAd) => API.patch(`/ads/${id}`, updatedAd);

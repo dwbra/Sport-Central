@@ -3,6 +3,7 @@ import { TextField, Button, Typography, Paper } from '@material-ui/core'
 import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
 import {createAd, updateAd} from '../../actions/ads.js'
+import {Link} from 'react-router-dom'
 import LocationFinder from '../LocationFinder/LocationFinder'
 import SportsList from '../SportsList/SportsList'
 import MultiSlider from '../MultiSlider/MultiSlider'
@@ -27,7 +28,7 @@ const Form = ({currentId, setCurrentId}) => {
         gamesLocation: {lat: [0], lng: [0]},
     })
     const user = JSON.parse(localStorage.getItem('profile'))
-    const ad = useSelector((state) => currentId ? state.ads.find((a) => a._id === currentId) : null)
+    const ad = useSelector((state) => currentId ? state.ads.ads.find((a) => a._id === currentId) : null)
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -84,6 +85,7 @@ const Form = ({currentId, setCurrentId}) => {
                 <Typography variant="h6" align="center">
                     Please sign in to create a sports team ad
                 </Typography>
+                <Button component={Link} to="/auth" variant="contained" color="primary">Sign Up/Log In</Button>
             </Paper>
         )
     }
@@ -107,7 +109,7 @@ const Form = ({currentId, setCurrentId}) => {
     return (
         <Paper>
             <form autoComplete="off" noValidate onSubmit={handleSubmit}>
-                <Typography variant="h6">{currentId ? 'Editing' : 'Creating'} An Add</Typography>
+                <Typography variant="h2">{currentId ? 'Editing' : 'Creating'} An Add</Typography>
                 <SportsList setSport={sportBack}/>
                 <TextField 
                     name="teamName" 
