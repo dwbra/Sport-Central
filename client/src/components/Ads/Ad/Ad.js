@@ -4,16 +4,18 @@ import moment from 'moment'
 import { useDispatch } from 'react-redux'
 import { deleteAd } from '../../../actions/ads.js'
 
-const Ad = ( { ad, setCurrentId } ) => {
+const Ad = ( { ad, setCurrentId, distance} ) => {
     const dispatch = useDispatch()
     const user = JSON.parse(localStorage.getItem('profile'));
 
     return (
         <Card>
             <div>
-                <Typography variant="h4">{ad.teamName}</Typography>
-                <Typography variant="h6">{ad.sport}</Typography>
-                <Typography variant="body2">{moment(ad.createdAt).fromNow()}</Typography>
+                <Typography variant="h6">Teamname: {ad.teamName}</Typography>
+                <Typography variant="body1">Sport: {ad.sport}</Typography>
+                <Typography variant="body1">Created: {moment(ad.createdAt).fromNow()}</Typography>
+                <Typography variant="body1">distance away {distance} km</Typography>
+
             </div>
             <div>
 

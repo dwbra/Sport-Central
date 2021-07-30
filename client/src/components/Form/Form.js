@@ -3,9 +3,15 @@ import { TextField, Button, Typography, Paper } from '@material-ui/core'
 import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
 import {createAd, updateAd} from '../../actions/ads.js'
+import LocationFinder from '../LocationFinder/LocationFinder'
 
 
 const Form = ({currentId, setCurrentId}) => {
+
+    const [searchComps, setsearchComps] = useState({
+        locationFinderVis: false,
+    });
+
 
     const [adData, setAdData] = useState({
         teamName: '',
@@ -15,7 +21,8 @@ const Form = ({currentId, setCurrentId}) => {
         clubName: '',
         leagueName: '',
         skillLevel: '',
-        mixedTeam: false
+        mixedTeam: false,
+        gamesLocation: {lat: [0], lng: [0]},
     })
     const user = JSON.parse(localStorage.getItem('profile'))
     const ad = useSelector((state) => currentId ? state.ads.find((a) => a._id === currentId) : null)
@@ -24,6 +31,27 @@ const Form = ({currentId, setCurrentId}) => {
     useEffect(() => {
         if(ad) setAdData(ad)
     }, [ad])
+
+    function setLocationFinderVis() {
+        if (searchComps.locationFinderVis === false) {
+            setsearchComps(searchComps => ({
+                ...searchComps,
+                locationFinderVis: true
+            }))
+        } else {
+            setsearchComps(searchComps => ({
+                ...searchComps,
+                locationFinderVis: false
+            })) 
+        }
+    }
+
+    function locationBack(lat,lng) {
+        setLocationFinderVis()
+        setAdData({...adData, 
+            gamesLocation: {lat: [lat], lng: [lng]},
+        })
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -57,7 +85,8 @@ const Form = ({currentId, setCurrentId}) => {
             clubName: '',
             leagueName: '',
             skillLevel: '',
-            mixedTeam: false
+            mixedTeam: false,
+            gamesLocation: {lat: [0], lng: [0]},
         })
     }
 
@@ -89,6 +118,7 @@ const Form = ({currentId, setCurrentId}) => {
                     value={adData.skillLevel}
                     onChange={(e) => setAdData({...adData, skillLevel: e.target.value})}
                 />
+
                 <div>
                     {/* <FileBase 
                         type="file"
@@ -96,8 +126,10 @@ const Form = ({currentId, setCurrentId}) => {
                         onDone={({base64}) => setAdData({ ...adData, selectedFile: base64})}
                     /> */}
                 </div>
+                <Button onClick={setLocationFinderVis} variant="contained" color="secondary">Set Game Location</Button>
                 <Button variant="contained" color="primary" size="large" type="submit" fullWidth>Submit</Button>
                 <Button variant="contained" color="secondary" size="small" onClick={clear} fullWidth>Clear</Button>
+                <LocationFinder trigger={searchComps.locationFinderVis} lat={-33.8688} lng={151.2093} setLocation={locationBack}/>
                 
             </form>
 
