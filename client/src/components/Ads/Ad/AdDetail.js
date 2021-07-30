@@ -7,7 +7,7 @@ import { getAd } from '../../../actions/ads.js'
 import {Link} from 'react-router-dom'
 
 const AdDetail = () => {
-    const {ad} = useSelector((state) => state.ads)
+    const {ad, ads} = useSelector((state) => state.ads)
     const dispatch = useDispatch()
     const { id } = useParams()
     const user = JSON.parse(localStorage.getItem('profile'))

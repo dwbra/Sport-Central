@@ -93,7 +93,6 @@ const Form = ({currentId, setCurrentId}) => {
     const clear = () => {
         setCurrentId(null)
         setAdData({
-            creator: '',
             teamName: '',
             filled: false,
             sport: '',
