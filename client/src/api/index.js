@@ -29,5 +29,3 @@ export const updateGame = (id, updatedMessage) => API.patch(`/games/${id}`, upda
 export const deleteGame = (id) => API.delete(`/games/${id}`);
 
 export const getSports = () => API.get('/sports');
-
-export const getUserEmails = () => API.get('/user')

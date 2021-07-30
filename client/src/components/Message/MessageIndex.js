@@ -1,21 +1,18 @@
 import React, {useEffect} from 'react';
 import Dashboard from './Dashboard';
-import { getUserEmails } from '../../api';
 
 function MessageIndex() {
 
-    async function userEmails() {
-        const {data} = await getUserEmails();
-        console.log(data);
-        return data;
-    }
+    const userData = JSON.parse(localStorage.getItem('profile'))
+    console.log(userData)
 
-    useEffect(() => {
-        userEmails()
-      }, []);
+    const userEmail = userData.result.email
+    console.log(userEmail)
+
+    const id = userEmail
 
     const dashboard = (
-        <Dashboard id={2} />
+        <Dashboard id={id} />
     )
 
     return (

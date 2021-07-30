@@ -44,14 +44,3 @@ export const signup = async (req, res) => {
         res.status(500).json({message: 'Something went wrong.'})
     }
 }
-
-
-export const getUserEmails = async (req, res) => {
-    try {
-        const Users = await User.find();
-        const Data = Users.map(user => user.email)
-        res.status(200).json(Data);
-    } catch (error) {
-        res.status(404).json({ message: error });
-    }
-};

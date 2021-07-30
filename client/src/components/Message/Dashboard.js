@@ -1,6 +1,7 @@
 import React from 'react';
+import { Tab, Nav } from 'react-bootstrap';
 
-function Dashboard() {
+function Dashboard({id}) {
 
     return (
         <div>
