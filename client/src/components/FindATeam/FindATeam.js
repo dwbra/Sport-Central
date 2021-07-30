@@ -89,7 +89,7 @@ const FindATeam = () => {
                     />
             </Toolbar>
 
-            <LocationFinder trigger={searchComps.locationFinderVis} lat={-33.8688} lng={151.2093} setLocation={locationBack}/>
+            <LocationFinder trigger={searchComps.locationFinderVis} lat={-33.8688} lng={151.2093} setLocation={locationBack} />
 
             {(() => {
                 if (searchComps.adsVis === true) {
@@ -100,7 +100,6 @@ const FindATeam = () => {
                             lng={searchFilters.lng} 
                             distance={searchFilters.distance} 
                             sport={searchFilters.sport}
-                            
                         />
                     )
                 }
