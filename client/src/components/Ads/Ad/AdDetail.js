@@ -2,14 +2,13 @@ import React, {useEffect} from 'react'
 import { Paper, Typography, Button } from '@material-ui/core'
 import { useDispatch, useSelector } from 'react-redux'
 import moment from 'moment'
-import { useHistory, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { getAd } from '../../../actions/ads.js'
 import {Link} from 'react-router-dom'
 
 const AdDetail = () => {
-    const {ad, ads} = useSelector((state) => state.ads)
+    const {ad} = useSelector((state) => state.ads)
     const dispatch = useDispatch()
-    const history = useHistory()
     const { id } = useParams()
     const user = JSON.parse(localStorage.getItem('profile'))
 

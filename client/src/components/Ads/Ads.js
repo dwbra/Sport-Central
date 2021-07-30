@@ -6,7 +6,6 @@ import {Link} from 'react-router-dom'
 
 const Ads = ({ setCurrentId}) => {
     const { ads } = useSelector((state) => state.ads)
-    console.log(ads)
     const user = JSON.parse(localStorage.getItem('profile'))
 
     if(!user) {
