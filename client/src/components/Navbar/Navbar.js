@@ -49,6 +49,7 @@ const Navbar = () => {
                        <Button component={Link} to="/create" variant="contained" color="secondary">Create</Button>
                        <Button component={Link} to="/explore" variant="contained" color="secondary">Explore</Button>
                        <Button component={Link} to="/inbox" variant="contained" color="secondary">Inbox</Button>
+                       <Button component={Link} to="/find" variant="contained" color="secondary">Find</Button>
                        <Button variant="contained" color="secondary" onClick={logout}>Logout</Button>
                     </div>                     
                 ) : (

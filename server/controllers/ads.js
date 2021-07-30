@@ -1,6 +1,6 @@
 import Mongoose from 'mongoose';
-import adListing from '../models/adListings.js';
 import AdListing from '../models/adListings.js'
+import adListing from '../models/adListings.js'
 
 export const getAds = async (req, res) => {
     try {
