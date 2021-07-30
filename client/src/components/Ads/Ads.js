@@ -24,7 +24,7 @@ const Ads = ({setCurrentId, distance, lat, lng}) => {
     }
 
     return (
-        !ads.length ? <CircularProgress /> : (
+        // !ads.length ? <CircularProgress /> : (
             <Grid container alignItems="stretch" spacing={3}>
                 {ads.map((ad) => {
                     let d = Math.round((distanceCalc(ad.gamesLocation.lat[0], ad.gamesLocation.lng[0], lat, lng)/1000) * 10) / 10
@@ -38,7 +38,7 @@ const Ads = ({setCurrentId, distance, lat, lng}) => {
                     }
                 })}
             </Grid>
-        )
+        // )
     )
 }
 
