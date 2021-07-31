@@ -1,7 +1,8 @@
 import mongoose from 'mongoose';
 
 const adSchema = mongoose.Schema ({
-    creator: String,
+    creatorId: String,
+    creatorEmail: String,
     teamName: String,
     name: String,
     filled: [Boolean],

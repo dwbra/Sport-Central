@@ -37,12 +37,7 @@ const Ads = ({currentId, setCurrentId, distance, lat, lng}) => {
                                 <Ad ad={ad} setCurrentId={setCurrentId} distance={d} />
                             </Grid>
                         )
-                    } else {
-                        return(
-                            <Grid key={ad._id} item xs={12} sm={6}>
-                                <Ad ad={ad} setCurrentId={setCurrentId} distance={d} />
-                            </Grid>
-                        )}
+                    }
                 })}
             </Grid>
             </>
