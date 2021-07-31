@@ -1,6 +1,10 @@
 import axios from 'axios';
 
-const API = axios.create({ baseURL: 'https://sport-central.herokuapp.com' });
+// For deployment
+// const API = axios.create({ baseURL: 'https://sport-central.herokuapp.com' });
+
+// For Local
+const API = axios.create({ baseURL: 'http://localhost:5000' });
 
 API.interceptors.request.use((req) => {
     if(localStorage.getItem('profile')) {
