@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import GoogleMapReact from 'google-map-react';
 import Marker from './Marker';
 import './Popup.css'
+import {Button} from '@material-ui/core'
 
 function LocationFinder(props) {
 
@@ -32,7 +33,7 @@ function LocationFinder(props) {
         ...coordinates,
         button: 'hidden'
         }))
-        props.setLocation(coordinates.selected_lat,coordinates.selected_lng)
+        props.setLocation(coordinates.selected_lat, coordinates.selected_lng, props.index)
     }
 
     return (props.trigger) ? (
@@ -54,7 +55,7 @@ function LocationFinder(props) {
                     </GoogleMapReact>
                 </div>
                 <div style={{position: 'absolute', left: '50%', visibility: coordinates.button }}>
-                    <button onClick={() => select()}  style={{ width: '100%', height: '20px'}}>Select location</button>
+                    <Button size="large" variant="contained" color="secondary" onClick={() => select()}  style={{ width: '100%', height: '50px'}}>Select location</Button>
                 </div>
             </div>     
         </div>

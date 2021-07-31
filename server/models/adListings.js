@@ -13,8 +13,8 @@ const adSchema = mongoose.Schema ({
     skillLevel: String,
     teamGender: String,
     playerGenders: [String],
-    gamesDateTime: [Date],
-    gamesLength: [Number],
+    gamesDateTime: [String],
+    gameLength: Number,
     gamesLocation: {
         lat: [Number],
         lng: [Number]
