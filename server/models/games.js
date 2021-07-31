@@ -11,7 +11,7 @@ const gameSchema = mongoose.Schema ({
     leagueName: String,
     skillLevel: String,
     mixedTeam: Boolean,
-    gamesDateTime: Date,
+    gamesDateTime: String,
     gamesLength: Number,
     gamesLocation: {
         lat: Number,
