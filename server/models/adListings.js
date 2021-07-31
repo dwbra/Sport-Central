@@ -1,7 +1,8 @@
 import mongoose from 'mongoose';
 
 const adSchema = mongoose.Schema ({
-    creator: String,
+    creatorId: String,
+    creatorEmail: String,
     teamName: String,
     name: String,
     filled: [Boolean],
@@ -13,8 +14,8 @@ const adSchema = mongoose.Schema ({
     skillLevel: String,
     teamGender: String,
     playerGenders: [String],
-    gamesDateTime: [Date],
-    gamesLength: [Number],
+    gamesDateTime: [String],
+    gameLength: Number,
     gamesLocation: {
         lat: [Number],
         lng: [Number]

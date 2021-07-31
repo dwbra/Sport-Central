@@ -35,7 +35,7 @@ const PrettoSlider = withStyles({
 
 let Value = ""
 
-const MultiSlider = ({setAsking, valuesArray, defaultValue ,title}) => {
+const MultiSlider = ({setAsking, valuesArray, defaultValue ,title, index}) => {
  
     const marks = valuesArray.map((e, i) => ({ value: i, label: e}))
 
@@ -50,8 +50,8 @@ const MultiSlider = ({setAsking, valuesArray, defaultValue ,title}) => {
     let handleChange = (event, newValue) => {
         if(Value !== newValue) {
             Value = newValue
-            setAsking(valuesArray[newValue])
-            console.log(valuesArray[newValue])
+            setAsking(valuesArray[newValue], index)
+            //console.log(valuesArray[newValue])
         }
     }
 

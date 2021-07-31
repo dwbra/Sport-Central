@@ -1,5 +1,9 @@
 import axios from 'axios';
 
+// For deployment
+// const API = axios.create({ baseURL: 'https://sport-central.herokuapp.com' });
+
+// For Local
 const API = axios.create({ baseURL: 'http://localhost:5000' });
 
 API.interceptors.request.use((req) => {
@@ -10,6 +14,7 @@ API.interceptors.request.use((req) => {
     return req
 })
 
+export const fetchAd = (id) => API.get(`/ads/${id}`)
 export const getAds = () => API.get('/ads');
 export const createAd = (newAd) => API.post('/ads', newAd); 
 export const updateAd = (id, updatedAd) => API.patch(`/ads/${id}`, updatedAd);

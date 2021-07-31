@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import {Select, MenuItem, InputLabel, FormControl} from '@material-ui/core'
 
 
-const SportsList = ({setSport}) => {
+const SportsList = ({setSport, passError}) => {
 
     const sportsList = [
         "All",
@@ -32,7 +32,7 @@ const SportsList = ({setSport}) => {
     }
 
     return (
-        <FormControl style={{marginLeft: '20px', marginTop: '20px',marginBottom: '5px', minWidth: 220}} >
+        <FormControl error={passError} style={{marginBottom: '5px', minWidth: 220}} >
             <InputLabel id="Sport">Select A Sport</InputLabel>
             <Select id="sport-select" value={sport} labelId="Sport" onChange={handleChange}>
                 {sportsList.map(MakeMenuItem)}
