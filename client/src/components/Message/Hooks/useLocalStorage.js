@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 
 const PREFIX = 'sport-central-'
 
+//creating a way to store information in localstorage
 export default function useLocalStorage(key, initialValue) {
   const prefixedKey = PREFIX + key
   const [value, setValue] = useState(() => {

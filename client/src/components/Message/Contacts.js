@@ -6,6 +6,7 @@ function Contacts() {
     const {contacts} = useContacts();
 
     return (
+      //iterating out your contacts
         <ListGroup variant="flush">
           {contacts.map(contact => (
             <ListGroup.Item key={contact.id}>

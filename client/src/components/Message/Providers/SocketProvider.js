@@ -1,29 +1,32 @@
-import React, {useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import io from 'socket.io-client';
 
-const SocketContext = React.createContext();
+//using react createContext to easily pass values to children without having to propdrill
+const SocketContext = React.createContext()
 
-export function useSocket(){
-    return useContext(SocketContext);
+//creating a hook to be able to access all functions within the socket provider
+export function useSocket() {
+  return useContext(SocketContext)
 }
 
-function SocketProvider({id, children}) {
-    const [socket, setSocket] = useState();
+// creating the primary socket provider 
+export function SocketProvider({ id, children }) {
+  const [socket, setSocket] = useState()
 
-    useEffect(() => {
-        const newSocket = io('http://localhost:5000',
-        {query: {id}}
+  useEffect(() => {
+    //trying to connect to the backend server socket and parse the user id(email)
+    const newSocket = io(
+      'http://localhost:5000',
+      { query: { id } }
     )
-        setSocket(newSocket)
-        return () => newSocket.close();
-    }, [id])
+    setSocket(newSocket)
+    //closing the connection to prevent bandwidth errors 
+    return () => newSocket.close()
+  }, [id])
 
-
-    return (
-        <SocketContext.Provider>
-            
-        </SocketContext.Provider>
-    )
-}
-
-export default SocketProvider
+  return (
+    <SocketContext.Provider value={socket}>
+      {children}
+    </SocketContext.Provider>
+  )
+};

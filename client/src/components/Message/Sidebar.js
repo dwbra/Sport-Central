@@ -5,8 +5,10 @@ import Conversations from './Conversations';
 import NewContactModal from './NewContactModal';
 import NewConversationModal from './NewConversationModal';
 
+//the left hand sidebar component where all of the contacts and conversations are stored
 function Sidebar({id}) {
 
+    //constants to prevent typos
     const CONVERSATIONS_KEY = 'conversations';
     const CONTACTS_KEY = 'contacts';
 

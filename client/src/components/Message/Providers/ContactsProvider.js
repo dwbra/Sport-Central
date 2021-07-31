@@ -1,8 +1,10 @@
 import React, {useContext} from 'react';
 import useLocalStorage from '../Hooks/useLocalStorage';
 
+//creating a way to handle all contact state and functions
 const ContactsContext = React.createContext();
 
+//hook to access all functions in component
 export function useContacts() {
     return useContext(ContactsContext)
 }

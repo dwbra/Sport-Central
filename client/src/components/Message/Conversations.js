@@ -6,6 +6,7 @@ function Conversations() {
     const {conversations, selectConversationIndex} = useConversations()
 
     return (
+      //iterating out all of your conversations
         <ListGroup variant="flush">
           {conversations.map((conversation, index) => (
             <ListGroup.Item key={index} 

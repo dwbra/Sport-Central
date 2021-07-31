@@ -3,6 +3,7 @@ import OpenConversation from './OpenConversation';
 import Sidebar from './Sidebar';
 import {useConversations} from './Providers/ConversationsProvider';
 
+//Actual view of the message component. 
 function Dashboard({id}) {
     const {selectedConversation} = useConversations();
 

@@ -35,13 +35,17 @@ const primaryServer = mongoose.connect(process.env.MONGODB, {useNewUrlParser: tr
 
 mongoose.set('useFindAndModify', false);
 
+
+//initalising the socket server - attempting to use the primary server we already have
+//maybe we can just set a second port for the socket, have yet to try this. 
 const io = new Server(primaryServer, {
 });
 
 io.on("connection", (socket) => {
+    //setting the id to be static to avoid dynamic socket ID's being generated on every connection
     const id = socket.handshake.query.id
     socket.join(id)
-
+    //handling the data on different response messages
     socket.on('send-message', ({ recipients, text }) => {
         recipients,forEach(recipient => {
             const newRecipients = recipients.filter(r => r !== recipient)
@@ -51,4 +55,4 @@ io.on("connection", (socket) => {
             })
         })
     })
-})
+});

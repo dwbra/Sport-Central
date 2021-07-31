@@ -3,18 +3,21 @@ import {Form, Modal, Button} from 'react-bootstrap';
 import { useContacts } from './Providers/ContactsProvider';
 import { useConversations } from './Providers/ConversationsProvider';
 
+//model to create a new conversation
 function NewConversationModal({closeModal}) {
     const [selectedContactIds, setSelectedContactIds] = useState([]);
     const {contacts} = useContacts();
-    const {createConversations} = useConversations();
+    const {createConversation} = useConversations();
 
     function handleSubmit(e) {
         e.preventDefault()
-
-        createConversations(selectedContactIds)
+        //import function to create new conversation
+        createConversation(selectedContactIds)
+        //once created close the modal
         closeModal()
     }
-
+    
+    //handling the selection of your contact
     function handleCheckboxChange(contactId) {
         setSelectedContactIds(prevSelectedContactIds => {
             if (prevSelectedContactIds.includes(contactId)) {
