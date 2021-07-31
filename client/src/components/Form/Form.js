@@ -37,7 +37,8 @@ const Form = ({currentId, setCurrentId}) => {
         skillLevel: "Casual",
         teamGender: "Mixed",
         gameLength: 90,
-        gamesLocation: {lat: [0], lng: [0]},
+        gamesLocationLat: [0],
+        gamesLocationLng: [0],
         gamesDateTime: [0],
         playerGenders: ["Male"],
     })
@@ -65,7 +66,8 @@ const Form = ({currentId, setCurrentId}) => {
             skillLevel: "Casual",
             teamGender: "Mixed",
             gameLength: 90,
-            gamesLocation: {lat: [0], lng: [0]},
+            gamesLocationLat: [0],
+            gamesLocationLng: [0],
             gamesDateTime: [0],
             playerGenders: ["Male"],
         })
@@ -112,15 +114,18 @@ const Form = ({currentId, setCurrentId}) => {
         setLocationFinderVis(0)
         if (index === 0) {
             setAdData({...adData, 
-                gamesLocation: {lat: [lat], lng: [lng]},
+                gamesLocationLat: [lat],
+                gamesLocationLng: [lng],
             })
         } else {
-            const current = adData.gamesLocation
+            const currentLat = adData.gamesLocationLat
+            const currentLng = adData.gamesLocationLng
             //console.log(current.lat)    
-            current.lat.splice(index, 1, lat)
-            current.lng.splice(index, 1, lng)
+            currentLat.splice(index, 1, lat)
+            currentLng.splice(index, 1, lng)
             setAdData({...adData, 
-                gamesLocation: current,
+                gamesLocationLat: currentLat,
+                gamesLocationLng: currentLng,
             })  
         }
     }
@@ -185,14 +190,14 @@ const Form = ({currentId, setCurrentId}) => {
 
         // Check all game location are no 0
         if (adData.numberOfGames < 2){
-            if (adData.gamesLocation.lat[0] === 0){
+            if (adData.gamesLocationLat[0] === 0){
                 console.log("game Location error")
                 pass = false
                 gameLocationError = true
             }  
         } else {
-            for(var i = 0; i < adData.gamesLocation.lat.length ; i++) {
-                if (adData.gamesLocation.lat[i] === 0){
+            for(var i = 0; i < adData.gamesLocationLat.length ; i++) {
+                if (adData.gamesLocationLat[i] === 0){
                     console.log("game Location error")
                     pass = false
                     gameLocationError = true
@@ -208,7 +213,7 @@ const Form = ({currentId, setCurrentId}) => {
                 gameDateTimeError = true
             }  
         } else {
-            for(i = 0; i < adData.gamesLocation.lat.length ; i++) {
+            for(i = 0; i < adData.gamesLocationLat.length ; i++) {
                 if (adData.gamesDateTime[i] === 0){
                     console.log("game Date Time error")
                     pass = false
@@ -269,25 +274,27 @@ const Form = ({currentId, setCurrentId}) => {
     function updateGamesNumber(e) {
         const re = /^[0-9\b]+$/;
         if ((e.target.value === '' || re.test(e.target.value)) && e.target.value < 26 && e.target.value > 0) {
-            let location = adData.gamesLocation
+            let locationLat = adData.gamesLocationLat
+            let locationLng = adData.gamesLocationLng
             let dateTime = adData.gamesDateTime
             if (dateTime.length < e.target.value ) {
                 while (String(dateTime.length) !== e.target.value){
                     dateTime.push(0)
-                    location.lat.push(0)
-                    location.lng.push(0)
+                    locationLat.push(0)
+                    locationLng.push(0)
                 }
             } 
             if (dateTime.length > e.target.value ) {
                 while (String(dateTime.length) !== e.target.value ){
                     dateTime.splice(dateTime.length-1, 1)
-                    location.lat.splice(dateTime.length-1, 1)
-                    location.lng.splice(dateTime.length-1, 1)
+                    locationLat.splice(dateTime.length-1, 1)
+                    locationLng.splice(dateTime.length-1, 1)
                 }
             }
             setAdData({...adData, 
                gamesDateTime: dateTime,
-               gamesLocation: location,
+               gamesLocationLat: locationLat,
+               gamesLocationLng: locationLng,
                numberOfGames: e.target.value,
             }) 
         }
@@ -537,7 +544,7 @@ const Form = ({currentId, setCurrentId}) => {
                                         label="Game Latitude" 
                                         halfWidth
                                         variant="filled"
-                                        value={adData.gamesLocation.lat[0]}
+                                        value={adData.gamesLocationLat[0]}
                                         InputProps={{
                                             readOnly: true,
                                         }}
@@ -551,7 +558,7 @@ const Form = ({currentId, setCurrentId}) => {
                                         label="Game Longitude" 
                                         halfWidth
                                         variant="filled"
-                                        value={adData.gamesLocation.lng[0]}
+                                        value={adData.gamesLocationLng[0]}
                                         InputProps={{
                                             readOnly: true,
                                         }}
@@ -634,7 +641,7 @@ const Form = ({currentId, setCurrentId}) => {
                                         label="Game Latitude" 
                                         halfWidth
                                         variant="filled"
-                                        value={adData.gamesLocation.lat[0]}
+                                        value={adData.gamesLocationLat[0]}
                                         InputProps={{
                                             readOnly: true,
                                         }}
@@ -648,7 +655,7 @@ const Form = ({currentId, setCurrentId}) => {
                                         label="Game Longitude" 
                                         halfWidth
                                         variant="filled"
-                                        value={adData.gamesLocation.lng[0]}
+                                        value={adData.gamesLocationLng[0]}
                                         InputProps={{
                                             readOnly: true,
                                         }}
@@ -677,7 +684,7 @@ const Form = ({currentId, setCurrentId}) => {
                                                 name="gameLatitude"  
                                                 halfWidth
                                                 variant="filled"
-                                                value={adData.gamesLocation.lat[i]}
+                                                value={adData.gamesLocationLat[i]}
                                                 InputProps={{
                                                     readOnly: true,
                                                 }}
@@ -690,7 +697,7 @@ const Form = ({currentId, setCurrentId}) => {
                                                 name="gameLongitude"  
                                                 halfWidth
                                                 variant="filled"
-                                                value={adData.gamesLocation.lng[i]}
+                                                value={adData.gamesLocationLng[i]}
                                                 InputProps={{
                                                     readOnly: true,
                                                 }}
