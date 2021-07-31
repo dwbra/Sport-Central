@@ -47,22 +47,11 @@ function OpenConversation() {
             </div>
             </div>
             <Form onSubmit={handleSubmit}>
-                <Form.Group className="m-2">
-                    <InputGroup>
-                        <Form.Control as="text-area"
-                        required
-                        value={text}
-                        onChange={e => setText(e.target.value)}
-                        style= {{height: '75px', resize: 'none', border: 'black 1px solid', width:  "100%" }}
-                        />
-                        <InputGroup.Append>
-                            <Button type="submit">Send</Button>
-                        </InputGroup.Append>
-                    </InputGroup>
-                </Form.Group>
+                <input type="text" required value={text} onChange={e => setText(e.target.value)} style={{height: '75px', resize: 'none', border: 'black 1px solid', width:  "100%"}}></input>
+                <Button type="submit">Send</Button>
             </Form>
         </div>
     )
 }
 
-export default OpenConversation
+export default OpenConversation;

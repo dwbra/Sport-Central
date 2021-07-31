@@ -9,10 +9,15 @@ function MessageIndex() {
 
     //grabbing the logged in users data
     const userData = JSON.parse(localStorage.getItem('profile'))
+    console.log(userData);
 
-    //getting the users email and setting it as the id to pass to all children components
-    const userEmail = userData.result.email
-    const id = userEmail
+    const userId = userData.result._id
+    const id = userId;
+    console.log(userId);
+
+    // //getting the users email and setting it as the id to pass to all children components
+    // const userEmail = userData.result.email
+    // const id = userEmail
 
     //creating a variable to store all components and pass id down to their children
     const dashboard = (
