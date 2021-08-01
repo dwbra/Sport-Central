@@ -17,6 +17,7 @@ import AdDetail from './components/Ads/Ad/AdDetail.js';
 import FindATeam from './components/FindATeam/FindATeam.js'
 import MessageIndex from './components/Message/MessageIndex.js';
 import Ads from './components/Ads/Ads.js';
+import Message from './components/Message2/Message.js';
 
 function App() {
 
@@ -41,6 +42,7 @@ function App() {
             <Route path="/explore" exact component={() => <Ads setCurrentId={setCurrentId} />}/>
             <Route path="/explore/:id" component={AdDetail} />
             <Route path="/find" exact component={FindATeam}/>
+            <Route path="/message2" exact component={Message}/>
           </Switch>
         </Container>
       </Router>
