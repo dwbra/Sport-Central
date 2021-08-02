@@ -30,7 +30,7 @@ const Ads = ({currentId, setCurrentId, distance, lat, lng}) => {
             <Typography variant="h2">All ads</Typography>
             <Grid container alignItems="stretch" spacing={3}>
                 {ads?.map((ad) => {
-                    let d = Math.round((distanceCalc(ad.gamesLocation.lat[0], ad.gamesLocation.lng[0], lat, lng)/1000) * 10) / 10
+                    let d = Math.round((distanceCalc(ad.gamesLocationLat[0], ad.gamesLocationLng[0], lat, lng)/1000) * 10) / 10
                     if (d < distance) {
                         return(
                             <Grid key={ad._id} item xs={12} sm={6}>

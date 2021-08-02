@@ -15,7 +15,7 @@ export const getAd = async (req,res) => {
     const {id} = req.params
 
     try {
-        const ad = await adListing.findById(id)
+        const ad = await AdListing.findById(id)
 
         res.status(200).json(ad)
     } catch (error) {
