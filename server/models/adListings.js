@@ -17,9 +17,10 @@ const adSchema = mongoose.Schema ({
     gamesDateTime: {type: [String], required: true},
     gameLength:{type: Number, required: true},
     gamesLocationLat: { type: [Number], required: true},
-    gamesLocationLng: { type: [Number], required: true},    
+    gamesLocationLng: { type: [Number], required: true},
+    creatorComment: {type: String, required: false},   
 }, { timestamps: true });
 
-const adListing = mongoose.model('AdListing', adSchema);
+const AdListing = mongoose.model('AdListings', adSchema);
 
-export default adListing;
+export default AdListing;

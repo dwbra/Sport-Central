@@ -1,5 +1,9 @@
 import Mongoose from 'mongoose';
 import Game from '../models/games.js'
+import AdListing from '../models/adListings.js'
+import User from '../models/users.js'
+import creatingGames from '../middleware/creatingGames.js'
+import updateAdWithFilled from '../middleware/updateAdWithFilled.js'
 
 export const getGames = async (req, res) => {
     try {
@@ -11,13 +15,38 @@ export const getGames = async (req, res) => {
 };
 
 export const createGame = async (req, res) => {
-    const data = req.body;
-    const newGame = new Game({ ...data, creator: req.userID, createdAt: new Date().toISOString() });
-    try {   
-        await newGame.save();
-        res.status(201).json(newGame);
-    } catch (error) {
-        res.status(409).json({message: error})
+    const adId = req.body.adId;
+    const playerId = req.body.playerId;
+    const adPosNumber = req.body.gameNumber;
+    //console.log("Creating games from ad: ", adId)
+    //console.log("Creating games to player : ", playerId)
+
+    //### get ad from passed info.
+    const ad = await AdListing.findById(adId)
+    //console.log("ad: ", ad)
+
+    //### get player user info from passed info.
+    const player = await User.findById(playerId)
+    //console.log("player: ", player)
+
+    //### send ad and players info to function (creatingGames) in the middleware.
+    //### The creatingGames function will return and array of all the games to be created. 
+    const gamesResult = creatingGames(ad, player, adPosNumber)
+    //console.log("creatingGames result : ", gamesResult)
+
+    // create to new games from the gamesResult array.
+    console.log("Game info",gamesResult)
+    if (gamesResult[0] !== 'error wrong Ad Position Number') {
+        for(var i = 0; i < gamesResult.length; i++) {
+            const newGame = new Game(gamesResult[i]);
+            await newGame.save()
+        }
+        // update the AdListing filled on the at and the AdListing
+        const adUpdated = updateAdWithFilled(ad, adPosNumber)
+        const _id = adUpdated._id
+        const updatedAd = await AdListing.findByIdAndUpdate(_id, { ...adUpdated, _id}, { new : true });
+    } else {
+        res.status(409).json({message: gamesResult[0]})
     }
 };
 
