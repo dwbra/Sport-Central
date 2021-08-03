@@ -11,8 +11,8 @@ export const getMessages = async (req, res) => {
 };
 
 export const createMessage = async (req, res) => {
-    const ad = req.body;
-    const newMessage = new Message({ ...ad, creator: req.userId, createdAt: new Date().toISOString() });
+    const data = req.body;
+    const newMessage = new Message({ ...data, from: req.userId, createdAt: new Date().toISOString() });
     try {
         await newMessage.save();
         res.status(201).json(newMessage);

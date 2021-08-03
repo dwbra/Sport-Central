@@ -16,7 +16,7 @@ export function SocketProvider({ id, children }) {
   useEffect(() => {
     //trying to connect to the backend server socket and parse the user id
     //sending the query as the id param
-    const newSocket = io('http://localhost:5000', {
+    const newSocket = io({
       query: { id } 
     })
 
