@@ -28,6 +28,7 @@ export const createMessage = (newMessage) => API.post('/messages', newMessage);
 export const updateMessage = (id, updatedMessage) => API.patch(`/messages/${id}`, updatedMessage);
 export const deleteMessage = (id) => API.delete(`/messages/${id}`);
 
+export const fetchGame = (id) => API.get(`/games/${id}`)
 export const getGames = () => API.get('/games');
 export const createGame = (newMessage) => API.post('/games', newMessage); 
 export const updateGame = (id, updatedMessage) => API.patch(`/games/${id}`, updatedMessage);

@@ -46,6 +46,7 @@ const Navbar = () => {
                        <Avatar alt={user?.result.name} src={user?.result.imageUrl}>{user?.result.name.charAt(0)}</Avatar>
                        <Typography variant="h6">{user.result.name}</Typography>
                        <Button component={Link} to="/home" variant="contained" color="secondary">Home</Button>
+                       <Button component={Link} to="/games" variant="contained" color="secondary">Games</Button>
                        <Button component={Link} to="/create" variant="contained" color="secondary">Create</Button>
                        <Button component={Link} to="/explore" variant="contained" color="secondary">Explore</Button>
                        <Button component={Link} to="/message" variant="contained" color="primary">Message</Button>

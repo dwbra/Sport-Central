@@ -14,6 +14,18 @@ export const getGames = async (req, res) => {
     }
 };
 
+export const getGame = async (req,res) => {
+    const {id} = req.params
+
+    try {
+        const game = await Game.findById(id)
+
+        res.status(200).json(game)
+    } catch (error) {
+        res.status(404).json({ message: error });
+    }
+}
+
 export const createGame = async (req, res) => {
     const adId = req.body.adId;
     const playerId = req.body.playerId;

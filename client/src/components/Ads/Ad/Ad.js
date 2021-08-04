@@ -35,13 +35,13 @@ const Ad = ( { ad, setCurrentId, distance} ) => {
             </div>
         </ButtonBase>
             <CardActions>
-            {(user?.result?.googleId === ad?.creator || user?.result?._id === ad?.creator) && (
+            {(user?.result?.googleId === ad?.creatorId || user?.result?._id === ad?.creatorId) && (
                 <Button style={{color: 'black'}} size="small" onClick={updateAd}>
                 Update
                 </Button>
              
             )}
-            {(user?.result?.googleId === ad?.creator || user?.result?._id === ad?.creator) && (
+            {(user?.result?.googleId === ad?.creatorId || user?.result?._id === ad?.creatorId) && (
                 <Button style={{color: 'red'}} size="small" onClick={() => dispatch(deleteAd(ad._id))}>
                     Delete
                 </Button>
