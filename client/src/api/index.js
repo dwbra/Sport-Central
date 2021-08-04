@@ -20,6 +20,8 @@ export const createAd = (newAd) => API.post('/ads', newAd);
 export const updateAd = (id, updatedAd) => API.patch(`/ads/${id}`, updatedAd);
 export const deleteAd = (id) => API.delete(`/ads/${id}`);
 
+export const applyForPosition = (updatedAd) => API.patch(`/adInteract`, updatedAd);
+
 export const signIn = (formData) => API.post('/user/signin', formData)
 export const signUp = (formData) => API.post('/user/signup', formData)
 

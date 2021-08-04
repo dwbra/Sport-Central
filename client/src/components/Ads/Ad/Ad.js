@@ -28,6 +28,7 @@ const Ad = ( { ad, setCurrentId, distance} ) => {
                 <Typography variant="h4">{ad.teamName}</Typography>
                 <Typography variant="h6">{ad.sport}</Typography>
                 <Typography variant="body2">{moment(ad.createdAt).fromNow()}</Typography>
+                <Typography variant="body2">Date time: {ad.gamesDateTime[0]}</Typography>
                 <Typography variant="body1">distance away {distance} km</Typography>
             </div>
             <div>
@@ -35,13 +36,13 @@ const Ad = ( { ad, setCurrentId, distance} ) => {
             </div>
         </ButtonBase>
             <CardActions>
-            {(user?.result?.googleId === ad?.creator || user?.result?._id === ad?.creator) && (
+            {(user?.result?._id === ad?.creatorId) && (
                 <Button style={{color: 'black'}} size="small" onClick={updateAd}>
                 Update
                 </Button>
              
             )}
-            {(user?.result?.googleId === ad?.creator || user?.result?._id === ad?.creator) && (
+            {(user?.result?._id === ad?.creatorId) && (
                 <Button style={{color: 'red'}} size="small" onClick={() => dispatch(deleteAd(ad._id))}>
                     Delete
                 </Button>

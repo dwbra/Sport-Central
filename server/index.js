@@ -12,6 +12,7 @@ import userRoutes from './routes/users.js';
 import messageRoutes from './routes/messages.js';
 import gameRoutes from './routes/games.js';
 import sportRoutes from './routes/sports.js';
+import adInteractRoutes from './routes/adInteract.js';
 
 
 
@@ -34,6 +35,7 @@ app.use('/user', userRoutes);
 app.use('/messages', messageRoutes);
 app.use('/games', gameRoutes);
 app.use('/sports', sportRoutes);
+app.use('/adInteract', adInteractRoutes);
 
 const PORT = process.env.PORT || 5000;
 const primaryServer = mongoose.connect(`${process.env.MONGODB}`, {useNewUrlParser: true, useUnifiedTopology: true })

@@ -5,7 +5,7 @@ import Ad from './Ad/Ad.js'
 import distanceCalc from '../LocationFinder/distanceCalc';
 import {Link} from 'react-router-dom'
 
-const Ads = ({currentId, setCurrentId, distance, lat, lng}) => {
+const Ads = ({currentId, setCurrentId, distance, lat, lng, gender, compOrCasual, sport, skillLevel}) => {
     const { ads } = useSelector((state) => state.ads)
     const user = JSON.parse(localStorage.getItem('profile'))
 
@@ -25,6 +25,8 @@ const Ads = ({currentId, setCurrentId, distance, lat, lng}) => {
         )
     }
 
+    console.log(gender, compOrCasual, sport)
+
     return (
             <>
             <Typography variant="h2">All ads</Typography>
@@ -32,11 +34,19 @@ const Ads = ({currentId, setCurrentId, distance, lat, lng}) => {
                 {ads?.map((ad) => {
                     let d = Math.round((distanceCalc(ad.gamesLocationLat[0], ad.gamesLocationLng[0], lat, lng)/1000) * 10) / 10
                     if (d < distance) {
-                        return(
-                            <Grid key={ad._id} item xs={12} sm={6}>
-                                <Ad ad={ad} setCurrentId={setCurrentId} distance={d} />
-                            </Grid>
-                        )
+                        if (gender === "All" || ad.teamGender === gender){
+                            if (compOrCasual === "All" || ad.compOrCasual=== compOrCasual){     
+                                if (sport === "All" || ad.sport === sport){  
+                                    if (skillLevel === "All" || ad.skillLevel === skillLevel){                          
+                                        return(
+                                            <Grid key={ad._id} item xs={12} sm={6}>
+                                                <Ad ad={ad} setCurrentId={setCurrentId} distance={d} />
+                                            </Grid>
+                                        )
+                                    }
+                                }
+                            }
+                        }
                     }
                 })}
             </Grid>
