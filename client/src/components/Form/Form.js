@@ -474,7 +474,7 @@ const Form = ({currentId, setCurrentId}) => {
                     />
 
                     {/* Skill Level ? */}
-                    <MultiSlider setAsking={skillLevelBack} valuesArray={["Noob", "Casual", "Armature", "Quite Good", "Pro"]} defaultValue={1} title={"Skill Level"}/>
+                    <MultiSlider setAsking={skillLevelBack} valuesArray={["Noob", "Casual", "Amateur", "Quite Good", "Pro"]} defaultValue={1} title={"Skill Level"}/>
 
                     {/* number of player needed ? */}
                     <TextField 
@@ -723,7 +723,7 @@ const Form = ({currentId, setCurrentId}) => {
     } else {
         return (
             <div style={{marginTop: '30px',marginLeft: '25%', maxWidth: '50%'}}>
-                <Typography variant="h6">{currentId ? 'Editid' : 'Created'} Add</Typography>
+                <Typography variant="h6">{currentId ? 'Editid' : 'Created'} Ad</Typography>
                 <Button variant="contained" color="primary" size="large" onClick={clear} fullWidth>OK</Button>
             </div>
         )

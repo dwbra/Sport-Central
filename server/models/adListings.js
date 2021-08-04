@@ -18,7 +18,11 @@ const adSchema = mongoose.Schema ({
     gameLength:{type: Number, required: true},
     gamesLocationLat: { type: [Number], required: true},
     gamesLocationLng: { type: [Number], required: true},
-    creatorComment: {type: String, required: false},   
+    creatorComment: {type: String, required: false},
+    applicantIds: {type: [String], required: false},
+    applicantName: {type: [String], required: false},
+    applicantGender: {type: [String], required: false},
+    applicantPosition: {type: [String], required: false},
 }, { timestamps: true });
 
 const AdListing = mongoose.model('AdListings', adSchema);

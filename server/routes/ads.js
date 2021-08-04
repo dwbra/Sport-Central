@@ -1,5 +1,5 @@
 import express from 'express';
-import { getAds, getAd, createAd, updateAd, deleteAd } from '../controllers/ads.js';
+import { getAds, getAd, createAd, updateAd, deleteAd} from '../controllers/ads.js';
 import auth from '../middleware/auth.js'
 
 const router = express.Router();
