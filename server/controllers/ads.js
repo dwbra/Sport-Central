@@ -2,6 +2,8 @@ import Mongoose from 'mongoose';
 import AdListing from '../models/adListings.js'
 import adListing from '../models/adListings.js'
 
+// Async function for retrieving all ads from the AdListing model
+// Successful reponse will send a status 200 along with the resulting object in json
 export const getAds = async (req, res) => {
     try {
         const AdListings = await AdListing.find();
@@ -11,6 +13,8 @@ export const getAds = async (req, res) => {
     }
 };
 
+// Async function for retrieving a specific ad based on the ad id
+// Successful reponse will send a status 200 along with the resulting ad in json
 export const getAd = async (req,res) => {
     const {id} = req.params
 
@@ -23,6 +27,8 @@ export const getAd = async (req,res) => {
     }
 }
 
+// Creating an ad by assigning the ad as the request body
+// Assigning the spread operator of the request data along with specified data types for the new ad
 export const createAd = async (req, res) => {
     const ad = req.body;
     const newAdListing = new AdListing({ ...ad, creator: req.userId, createdAt: new Date().toISOString() });
@@ -34,6 +40,9 @@ export const createAd = async (req, res) => {
     }
 };
 
+// Setting the id of the specific ad through the request params
+// Using the findByIdAndUpdate operator to select the specific ad to be updated
+// Use the spread operator to fill the form with previous ad details
 export const updateAd = async (req, res) => {
     const { id: _id } = req.params;
     const ad = req.body;
@@ -46,6 +55,8 @@ export const updateAd = async (req, res) => {
     }
 }
 
+// Setting the id of the specific ad through the request params
+// Check if id is valid, and if so, find and delete the ad within the database
 export const deleteAd = async (req, res) => {
     const { id } = req.params;
     if (!Mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No ad with that ${id}`);

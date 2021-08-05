@@ -14,7 +14,7 @@ const Games = ( {setCurrentId} ) => {
             <Typography variant="h2">All games</Typography>
             <Grid container alignItems="stretch" spacing={3}>
                 {games?.map((game) => (
-                    <Grid key={game.id} item xs={12} sm={6}>
+                    <Grid key={game._id} item xs={12} sm={6}>
                         <Game game={game} setCurrentId={setCurrentId} />
                     </Grid>
                 ))}

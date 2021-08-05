@@ -3,17 +3,8 @@ import * as api from '../api/index.js'
 
 // Action Creators
 
-// export const createGame = (game) => async (dispatch) => {
-//     try {
-//         const {data} = await api.createGame(game)
-//         dispatch({type: CREATE, payload: data})
-//     } catch (error) {
-//         console.log(error)
-//     }
-// }
-
 // Andrew's code for creating games
-export const createGame = (game) => async (dispatch) => {
+export const createGame = (ad, game) => async (dispatch) => {
     try {
         const {data} = await api.createGame(game)
         dispatch({type: CREATE, payload: data})

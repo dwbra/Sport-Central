@@ -10,7 +10,7 @@ const Home = ({setCurrentId}) => {
     const { games } = useSelector((state) => state.games)
     const user = JSON.parse(localStorage.getItem('profile'))
     const result = ads.filter(function(ad) {
-        return user?.result?.googleId === ad?.creator || user?.result?._id === ad?.creator
+        return user?.result?.googleId === ad?.creatorId || user?.result?._id === ad?.creatorId
     })
 
     if(!user) {
