@@ -1,7 +1,10 @@
 import { FETCH_ALL, FETCH_AD, CREATE, UPDATE, DELETE} from '../constants/actionTypes.js';
 
+// Setting the initial state of ads to be an object with an empty array
 const initialState = { ads:[] }
 
+// Reducer functions where the state is the initial state, and the actions determine the course of action
+// The spreadh operator is used in the actions to get the current state in the app, with the payload being the data retrieved through the API actions
 export default (state = initialState, action) => {
     switch (action.type) {
         case FETCH_ALL: 
