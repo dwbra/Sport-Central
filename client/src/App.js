@@ -18,6 +18,7 @@ import AdDetail from './components/Ads/Ad/AdDetail.js';
 import FindATeam from './components/FindATeam/FindATeam.js'
 import Ads from './components/Ads/Ads.js';
 import Games from './components/Games/Games.js'
+import AllMessages from './components/Message/AllMessages.js'
 
 
 function App() {
