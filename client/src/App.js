@@ -16,10 +16,9 @@ import Index from './components/Index/Index.js'
 import Inbox from './components/Inbox/Inbox.js'
 import AdDetail from './components/Ads/Ad/AdDetail.js';
 import FindATeam from './components/FindATeam/FindATeam.js'
-import MessageIndex from './components/Message/MessageIndex.js';
 import Ads from './components/Ads/Ads.js';
-import Message from './components/Message2/Message.js';
 import Games from './components/Games/Games.js'
+
 
 function App() {
 
@@ -44,11 +43,10 @@ function App() {
             <Route path="/auth" exact component={Auth}/>
             <Route path="/inbox" exact component={Inbox}/>
             <Route path="/create" exact component={() => <Form currentId={currentId} setCurrentId={setCurrentId} />}/>
-            <Route path="/message" exact component={MessageIndex}/>
+            <Route path="/message" exact component={AllMessages}/>
             <Route path="/explore" exact component={() => <Ads setCurrentId={setCurrentId} />}/>
             <Route path="/explore/:id" component={AdDetail} />
             <Route path="/find" exact component={FindATeam}/>
-            <Route path="/message2" exact component={Message}/>
             <Route path="/games" exact component={() => <Games setCurrentId={setCurrentId} />}/>
           </Switch>
         </Container>

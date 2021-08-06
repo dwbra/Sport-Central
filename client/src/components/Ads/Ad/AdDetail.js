@@ -100,7 +100,6 @@ const AdDetail = () => {
                                         )
                                       }
                                     })()}
-                                      
                                 </Box>
                               </div>
                             ))}

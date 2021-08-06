@@ -7,7 +7,7 @@ const creatingGames = (ad, player, adPosNumber) => {
     if (adPosNumber <= ad.filled.length) {
         if (ad.filled[adPosNumber] === false) {
             for(var i = 0; i < ad.numberOfGames; i++) {
-                console.log("Game created for ", player, "  Game number:", i)
+                //console.log("Game created for ", player, "  Game number:", i)
                 if (ad.gamesLocationLat.length === 1) {
                     gameNumber.push({
                         creatorId: ad.creatorId,
