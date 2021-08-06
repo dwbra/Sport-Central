@@ -7,6 +7,7 @@ import {
 import {Container} from '@material-ui/core'
 import {useDispatch } from 'react-redux'
 import { getAds } from './actions/ads.js'
+import { getGames } from './actions/games.js'
 import Form from './components/Form/Form.js'
 import Navbar from './components/Navbar/Navbar.js'
 import Home from './components/Home/Home.js'
@@ -16,7 +17,8 @@ import Inbox from './components/Inbox/Inbox.js'
 import AdDetail from './components/Ads/Ad/AdDetail.js';
 import FindATeam from './components/FindATeam/FindATeam.js'
 import Ads from './components/Ads/Ads.js';
-import AllMessages from './components/Message/AllMessages.js';
+import Games from './components/Games/Games.js'
+
 
 function App() {
 
@@ -25,6 +27,10 @@ function App() {
 
   useEffect(() => {
     dispatch(getAds())
+  }, [currentId, dispatch])
+
+  useEffect(() => {
+    dispatch(getGames())
   }, [currentId, dispatch])
 
   return (
@@ -41,6 +47,7 @@ function App() {
             <Route path="/explore" exact component={() => <Ads setCurrentId={setCurrentId} />}/>
             <Route path="/explore/:id" component={AdDetail} />
             <Route path="/find" exact component={FindATeam}/>
+            <Route path="/games" exact component={() => <Games setCurrentId={setCurrentId} />}/>
           </Switch>
         </Container>
       </Router>
