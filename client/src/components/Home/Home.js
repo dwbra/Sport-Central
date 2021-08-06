@@ -11,6 +11,7 @@ const Home = ({setCurrentId}) => {
     const user = JSON.parse(localStorage.getItem('profile'))
     const result = ads.filter(function(ad) {
         return user?.result?.googleId === ad?.creatorId || user?.result?._id === ad?.creatorId
+    })
     if(!user) {
         return(
             <Paper>
