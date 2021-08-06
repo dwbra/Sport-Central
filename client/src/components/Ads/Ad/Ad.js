@@ -21,6 +21,15 @@ const Ad = ( { ad, setCurrentId, distance} ) => {
         history.push(`/create`)
     }
 
+    function isCreator() {
+        if (user?.result?.googleId === ad?.creatorId || user?.result?._id === ad?.creatorId) {
+            return true
+        }
+        else {
+            return false
+        }
+      }
+
     return (
         <Card>
         <ButtonBase onClick={openAd}>
@@ -36,15 +45,15 @@ const Ad = ( { ad, setCurrentId, distance} ) => {
             </div>
         </ButtonBase>
             <CardActions>
-            {(user?.result?.googleId === ad?.creatorId || user?.result?._id === ad?.creatorId) && (
+            {(isCreator) && (
                 <Button style={{color: 'black'}} size="small" onClick={updateAd}>
                 Update
                 </Button>
              
             )}
-            {(user?.result?.googleId === ad?.creatorId || user?.result?._id === ad?.creatorId) && (
+            {(isCreator) && (
                 <Button style={{color: 'red'}} size="small" onClick={() => dispatch(deleteAd(ad._id))}>
-                    Delete
+                    Deleteee
                 </Button>
             )}   
             </CardActions>
