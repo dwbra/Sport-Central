@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import io from 'socket.io-client';
-
+import { getMessages } from '../../api';
 
 function Message() {
     const userData = JSON.parse(localStorage.getItem('profile'))
@@ -10,30 +10,38 @@ function Message() {
     const [text, setText] = useState('');
     const [socket, setSocket] = useState();
 
-    useEffect(() => {
-        const socket = io({
-          query: { id }
+    const allMessages = () => {
+        getMessages().then((data) => {
+            console.log(data)
         })
+    }
+
+    allMessages()
+
+    // useEffect(() => {
+    //     const socket = io({
+    //       query: { id }
+    //     })
     
-        setSocket(socket)
-        return () => socket.close()
-      }, [id])
+    //     setSocket(socket)
+    //     return () => socket.close()
+    //   }, [id])
 
-    useEffect(() => {
-        if (socket == null) return
+    // useEffect(() => {
+    //     if (socket == null) return
 
-        socket.on('receive-message', data => {
-            console.log('received data from server', data)
-            if (data.length) {
-                data.forEach(message => {
-                    let msg = document.getElementById('messages')
-                    msg.append(message)
-                })
-            }
-        })
+    //     socket.on('receive-message', data => {
+    //         console.log('received data from server', data)
+    //         if (data.length) {
+    //             data.forEach(message => {
+    //                 let msg = document.getElementById('messages')
+    //                 msg.append(message)
+    //             })
+    //         }
+    //     })
 
-        return () => socket.off('receive-message')
-    }, [socket])
+    //     return () => socket.off('receive-message')
+    // }, [socket])
 
 
     function handleSubmit(e){

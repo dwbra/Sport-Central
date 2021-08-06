@@ -50,7 +50,7 @@ const io = new Server(primaryServer, {
 
 io.on("connection", (socket) => {
     const id = socket.handshake.query.id
-    Messages.find({from: id}).then((result) => {
+    Messages.find().then((result) => {
         socket.emit('receive-message', result)
     })
 
