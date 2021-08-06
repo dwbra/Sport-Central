@@ -1,9 +1,38 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import {Button, Typography, Paper} from '@material-ui/core'
 import {Link} from 'react-router-dom'
+import {getMessages} from '../../api/index'
 
 const Inbox = () => {
-    const user = JSON.parse(localStorage.getItem('profile'))
+    const [contacts, setContacts] = useState([])
+    const user = JSON.parse(localStorage.getItem("profile"));
+
+    useEffect(() => {
+        const userEmail = user.result.email;
+        getMessages()
+        .then((messageData) => {
+            const newContacts = [];
+            messageData.data.forEach(({ from, to }) => {
+            console.log(from);
+            console.log(to);
+            if (userEmail === from && userEmail !== to) {
+                newContacts.push({ ...newContacts, to });
+            } else if (userEmail !== from && userEmail === to) {
+                newContacts.push({ ...newContacts, from });
+            } else {
+                return
+            }
+            });
+            setContacts(newContacts);
+            console.log(newContacts)
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+    }, []);
+
+    
+    
 
     if(!user) {
         return(
@@ -17,7 +46,8 @@ const Inbox = () => {
     } else {
         return (
             <Typography variant="h2">
-            This is the Inbox Page
+            <h2>Your Conversations</h2>
+            <div id="inboxMessages"></div>
             </Typography>
         )
     }
