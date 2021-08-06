@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import AndMessage from './AndMessage.js';
+import Messages from './Messages.js';
 import { TextField, Button, Box} from '@material-ui/core'
 
 const AllMessages = () => {
@@ -58,7 +58,7 @@ const AllMessages = () => {
                     if(state.currentMessagingUser !== ''){
                         console.log("open messaging to ",state.currentMessagingUser )
                         return (
-                            <AndMessage otherUserEmail={state.currentMessagingUser}/>
+                            <Messages otherUserEmail={state.currentMessagingUser}/>
                         )
                     }
                 })()}
