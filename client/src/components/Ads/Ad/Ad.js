@@ -28,6 +28,7 @@ const Ad = ( { ad, setCurrentId, distance} ) => {
                 <Typography variant="h4">{ad.teamName}</Typography>
                 <Typography variant="h6">{ad.sport}</Typography>
                 <Typography variant="body2">{moment(ad.createdAt).fromNow()}</Typography>
+                <Typography variant="body2">Date time: {ad.gamesDateTime[0]}</Typography>
                 <Typography variant="body1">distance away {distance} km</Typography>
             </div>
             <div>

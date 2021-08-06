@@ -1,6 +1,6 @@
 
 const updateAdWithFilled = (ad, adPosNumber) => {
-    ad.filled[adPosNumber] = true
+    ad.filled[adPosNumber-1] = true
     return ad
 };
 

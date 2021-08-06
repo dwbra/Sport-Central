@@ -24,6 +24,7 @@ export const updateAd = (id, updatedAd) => API.patch(`/ads/${id}`, updatedAd);
 export const deleteAd = (id) => API.delete(`/ads/${id}`);
 
 // API post requests that posts the form data for the relevant checks in the user controller
+export const applyForPosition = (updatedAd) => API.patch(`/adInteract`, updatedAd);
 export const signIn = (formData) => API.post('/user/signin', formData)
 export const signUp = (formData) => API.post('/user/signup', formData)
 

@@ -29,7 +29,7 @@ export const getGame = async (req,res) => {
 export const createGame = async (req, res) => {
     const adId = req.body.adId;
     const playerId = req.body.playerId;
-    const adPosNumber = req.body.gameNumber;
+    const adPosNumber = req.body.adPosNumber;
     //console.log("Creating games from ad: ", adId)
     //console.log("Creating games to player : ", playerId)
 
@@ -47,7 +47,7 @@ export const createGame = async (req, res) => {
     //console.log("creatingGames result : ", gamesResult)
 
     // create to new games from the gamesResult array.
-    console.log("Game info",gamesResult)
+    //console.log("Game info",gamesResult)
     if (gamesResult[0] !== 'error wrong Ad Position Number') {
         for(var i = 0; i < gamesResult.length; i++) {
             const newGame = new Game(gamesResult[i]);

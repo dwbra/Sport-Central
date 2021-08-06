@@ -5,6 +5,7 @@ import { getAds } from '../../actions/ads.js'
 import LocationFinder from '../LocationFinder/LocationFinder'
 import SportsList from '../SportsList/SportsList'
 import Ads from '../Ads/Ads.js'
+import MultiSlider from '../MultiSlider/MultiSlider'
 
 
 const FindATeam = () => {
@@ -27,6 +28,9 @@ const FindATeam = () => {
         lng: 0,
         distance: 100,
         sport: "All",
+        gender: "All",
+        compOrCasual: "All",
+        skillLevel: "All",
     });
 
     function setLocationFinderVis() {
@@ -41,6 +45,27 @@ const FindATeam = () => {
                 locationFinderVis: false
             })) 
         }
+    }
+
+    function compOrCasualBack(compOrCasual) {
+        setsearchFilters(searchFilters => ({
+            ...searchFilters,
+            compOrCasual: compOrCasual,
+        })) 
+    }
+
+    function teamGenderBack(gender) {
+        setsearchFilters(searchFilters => ({
+            ...searchFilters,
+            gender: gender,
+        })) 
+    }
+
+    function skillLevelBack(skillLevel) {
+        setsearchFilters(searchFilters => ({
+            ...searchFilters,
+            skillLevel: skillLevel,
+        })) 
     }
 
     function locationBack(lat,lng) {
@@ -76,9 +101,19 @@ const FindATeam = () => {
 
 
     return (
-        <div>
+        <div style={{maxWidth: '70%', margin: 'auto'}}>
             <SportsList setSport={sportBack}/>
+            {/* Casual or comp ? */}
+            <MultiSlider setAsking={compOrCasualBack} valuesArray={["All", "Casual", "Competition"]} defaultValue={0} title={"Game Types"}/>
+            
+            {/* Mixed ? */}
+            <MultiSlider setAsking={teamGenderBack} valuesArray={["All", "Mixed", "All Female", "All Male"]} defaultValue={0} title={"Team Gender"}/>
+
+            {/* Skill Level ? */}
+            <MultiSlider setAsking={skillLevelBack} valuesArray={["All", "Noob", "Casual", "Amateur", "Quite Good", "Pro"]} defaultValue={0} title={"Skill Level"}/>
+
             <Toolbar>
+
                 <Button onClick={setLocationFinderVis} variant="contained" color="secondary">Set Search Location</Button>
                 <TextField 
                     style={{margin: '20px'}}
@@ -88,6 +123,8 @@ const FindATeam = () => {
                     value={searchFilters.distance}
                     />
             </Toolbar>
+            
+
 
             <LocationFinder trigger={searchComps.locationFinderVis} lat={-33.8688} lng={151.2093} setLocation={locationBack} />
 
@@ -98,6 +135,9 @@ const FindATeam = () => {
                             setCurrentId={setCurrentId} 
                             lat={searchFilters.lat} 
                             lng={searchFilters.lng} 
+                            gender={searchFilters.gender}
+                            compOrCasual={searchFilters.compOrCasual}
+                            skillLevel={searchFilters.skillLevel}
                             distance={searchFilters.distance} 
                             sport={searchFilters.sport}
                         />
