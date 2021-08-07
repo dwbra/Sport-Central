@@ -49,7 +49,7 @@ function App() {
             <Route path="/inbox" exact component={Inbox}/>
             <Route path="/create" exact component={() => <Form currentId={currentId} setCurrentId={setCurrentId} />}/>
             <Route path="/message" exact component={MessageIndex}/>
-            <Route path="/explore" exact component={() => <Ads setCurrentId={setCurrentId} />}/>
+            <Route path="/explore" exact component={() => <Ads setCurrentId={setCurrentId} distance={''} gender={'All'} compOrCasual={'All'} skillLevel={'All'} sport={'All'} />}/>
             <Route path="/explore/:id" component={AdDetail} />
             <Route path="/find" exact component={FindATeam}/>
             <Route path="/message2" exact component={Message}/>

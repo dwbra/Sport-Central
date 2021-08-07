@@ -5,6 +5,8 @@ import User from '../models/users.js'
 import creatingGames from '../middleware/creatingGames.js'
 import updateAdWithFilled from '../middleware/updateAdWithFilled.js'
 
+// Async function in the server to find all games in the database
+// Then takes the Games object in json as a response
 export const getGames = async (req, res) => {
     try {
         const Games = await Game.find();
@@ -14,6 +16,8 @@ export const getGames = async (req, res) => {
     }
 };
 
+// Destructures id to be the params of the request
+// Assignes a variable game after finding a game by the id in the request
 export const getGame = async (req,res) => {
     const {id} = req.params
 

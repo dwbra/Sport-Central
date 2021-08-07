@@ -27,8 +27,6 @@ const Ads = ({currentId, setCurrentId, distance, lat, lng, gender, compOrCasual,
         )
     }
 
-    console.log(gender, compOrCasual, sport)
-
     // Returns the ads where the distance is within the parameters set by the user
     return (
             <>
@@ -36,7 +34,9 @@ const Ads = ({currentId, setCurrentId, distance, lat, lng, gender, compOrCasual,
             <Grid container alignItems="stretch" spacing={3}>
                 {ads?.map((ad) => {
                     let d = Math.round((distanceCalc(ad.gamesLocationLat[0], ad.gamesLocationLng[0], lat, lng)/1000) * 10) / 10
-                    if (d < distance) {
+                    console.log(distance)
+                    console.log(d)
+                    if (d < distance || distance == '') {
                         if (gender === "All" || ad.teamGender === gender){
                             if (compOrCasual === "All" || ad.compOrCasual=== compOrCasual){     
                                 if (sport === "All" || ad.sport === sport){  

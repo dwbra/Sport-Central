@@ -1,4 +1,4 @@
-import { CREATE, FETCH_ALL, FETCH_GAME } from '../constants/actionTypes';
+import { CREATE, FETCH_ALL_GAMES, FETCH_GAME } from '../constants/actionTypes';
 import * as api from '../api/index.js'
 
 // Action Creators
@@ -19,7 +19,7 @@ export const getGames = () => async (dispatch) => {
     try {
         const {data} = await api.getGames()
 
-        dispatch({ type: FETCH_ALL, payload: data })
+        dispatch({ type: FETCH_ALL_GAMES, payload: data })
     } catch (error) {
         console.log(error)
     }

@@ -16,6 +16,12 @@ const Home = ({setCurrentId}) => {
     const result = ads.filter(function(ad) {
         return user?.result?.googleId === ad?.creatorId || user?.result?._id === ad?.creatorId
     })
+    useSelector((state) => console.log(state))
+
+    const yourGames = games.filter(function(game) {
+        return user?.result?.googleId === game?.playerId || user?.result?._id === game?.playerId
+    })
+
     // Checks if the user is sign in, if not they will be prompted to sign in
     if(!user) {
         return(
@@ -31,7 +37,7 @@ const Home = ({setCurrentId}) => {
             <>
             <Typography variant="h4">Your Upcoming Games</Typography>
             <Grid container alignItems="stretch" spacing={3}>
-                {games.map((game) => (
+                {yourGames.map((game) => (
                     <Grid key={game._id} item xs={12} sm={6}>
                         <Game game={game} setCurrentId={setCurrentId}/>
                     </Grid>

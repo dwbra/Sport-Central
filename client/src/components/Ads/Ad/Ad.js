@@ -23,20 +23,6 @@ const Ad = ( { ad, setCurrentId, distance} ) => {
         history.push(`/create`)
     }
 
-    // Function to determine whether the current logged in user, whether from email auth or google log in, is the creator of the specific ad they are viewing
-    function isCreator() {
-        if (user?.result?.googleId === ad?.creatorId || user?.result?._id === ad?.creatorId) {
-            return true
-        }
-        else {
-            return false
-        }
-      }
-
-    function squared(number) {
-        return number * number
-    }
-
     //   Returns the details of the ad, and only shows the update or delete buttons if the isCreator function returns true
     return (
         <Card>
@@ -53,13 +39,13 @@ const Ad = ( { ad, setCurrentId, distance} ) => {
             </div>
         </ButtonBase>
             <CardActions>
-            {(isCreator) && (
+            {(user?.result?.googleId === ad?.creatorId || user?.result?._id === ad?.creatorId) && (
                 <Button style={{color: 'black'}} size="small" onClick={updateAd}>
                 Update
                 </Button>
              
             )}
-            {(isCreator) && (
+            {(user?.result?.googleId === ad?.creatorId || user?.result?._id === ad?.creatorId) && (
                 <Button style={{color: 'red'}} size="small" onClick={() => dispatch(deleteAd(ad._id))}>
                     Delete
                 </Button>
