@@ -13,8 +13,8 @@ const Inbox = () => {
         .then((messageData) => {
             const newContacts = [];
             messageData.data.forEach(({ from, to }) => {
-            console.log(from);
-            console.log(to);
+            // console.log(from);
+            // console.log(to);
             if (userEmail === from && userEmail !== to) {
                 newContacts.push({ ...newContacts, to });
             } else if (userEmail !== from && userEmail === to) {
@@ -24,12 +24,22 @@ const Inbox = () => {
             }
             });
             setContacts(newContacts);
-            console.log(newContacts)
+            // console.log(newContacts)
+
+            for(var key in newContacts) {
+                var value = newContacts[key];
+                console.log(value.to)
+                console.log(value.from)
+                let d = document.getElementById('inboxMessages')
+                d.insertAdjacentHTML('afterbegin', `<button value=${value.to || value.from}>Send a Message</button>`)
+            }
         })
         .catch((error) => {
             console.log(error);
         });
     }, []);
+
+
 
     
     
