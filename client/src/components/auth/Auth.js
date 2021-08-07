@@ -48,6 +48,7 @@ const Auth = () => {
 
     // handlechange for the form fields, assigning the values to the appropriate names
     const handleChange = (e) => {
+        setFormData(initialState)
         setFormData({...formData, [e.target.name]: e.target.value})
     }
 
@@ -75,6 +76,8 @@ const Auth = () => {
 
     //   Button handler on whether the user is trying to sign up or log in
     const switchMode = () => {
+        setFormData(initialState)
+        console.log(formData)
         setisSignup((previsSignup) => !previsSignup)
         handleShowPassword(false)
     }

@@ -22,18 +22,22 @@ import Message from './components/Message2/Message.js';
 import Games from './components/Games/Games.js'
 
 function App() {
-
+  // React hook to set the current id of the ads to initially be null
   const [currentId, setCurrentId] = useState(null)
+  // Initialises the useDispatch function from redux
   const dispatch = useDispatch()
 
+  // useEffect that will dispatch to get ads and re-run every time there is a change in the variables in the dependency array
   useEffect(() => {
     dispatch(getAds())
   }, [currentId, dispatch])
 
+  // useEffect that will dispatch to get games and re-run every time there is a change in the variables in the dependency array
   useEffect(() => {
     dispatch(getGames())
   }, [currentId, dispatch])
 
+  // Returns the navbar components, along with all the relevant routes for the buttons in the navbar component
   return (
       <Router>
         <Container>

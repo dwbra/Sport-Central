@@ -6,12 +6,17 @@ import Games from '../Games/Games.js'
 import Game from '../Games/Game/Game.js'
 
 const Home = ({setCurrentId}) => {
+    // Destructures the ad object from the useSelector state, fetched from the reducer actions
     const {ads } = useSelector((state) => state.ads)
+    // Destructures the games object from the useSelector state, fetched from the reducer actions
     const { games } = useSelector((state) => state.games)
+    // Retrieves the profile of the signed in user stored in localstorage and sets their details as a variable user
     const user = JSON.parse(localStorage.getItem('profile'))
+    // Filters from all the ads in the database to only retreieve the ads where the user created the ad
     const result = ads.filter(function(ad) {
         return user?.result?.googleId === ad?.creatorId || user?.result?._id === ad?.creatorId
     })
+    // Checks if the user is sign in, if not they will be prompted to sign in
     if(!user) {
         return(
             <Paper>
@@ -20,6 +25,7 @@ const Home = ({setCurrentId}) => {
                 </Typography>
             </Paper>
         )
+        // If the user is signed in, it will display their upcoming games and also the ads they have created on the screen
     } else {
         return (
             <>
