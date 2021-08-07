@@ -1,5 +1,5 @@
-const isCreator = require('./Ad.js')
+import {squared} from './Ad.js'
 
-test('should return false', () => {
-    expect(isCreator()).toBeTruthy();
+test('number should be squared', () => {
+    expect(squared(4)).toBe(16);
   });

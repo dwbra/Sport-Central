@@ -14,9 +14,12 @@ const AdDetail = () => {
         action: false,
     });
 
+    // Returns the ad as an object in the current state
     const {ad} = useSelector((state) => state.ads) // removed ads
+    // Calls the useDispatch functions from redux
     const dispatch = useDispatch()
     const { id } = useParams()
+    // Sets the variable for user as the local storage logged in user
     const user = JSON.parse(localStorage.getItem('profile'))
 
 
