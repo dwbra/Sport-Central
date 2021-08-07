@@ -14,8 +14,6 @@ import gameRoutes from './routes/games.js';
 import sportRoutes from './routes/sports.js';
 import adInteractRoutes from './routes/adInteract.js';
 
-
-
 //initiate express to be able to call methods from.
 const app = express();
 dotenv.config();

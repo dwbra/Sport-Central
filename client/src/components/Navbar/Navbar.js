@@ -37,22 +37,29 @@ const Navbar = () => {
 
     return (
         <AppBar position="static" color="inherit">
-            <div>
+            <Toolbar>
                 <Typography component={Link} to={user ? '/home' : '/'} variant="h2" align="center">Sport Central</Typography>
-            </div>
+                {user ? (
+                    <div>
+                    <Avatar alt={user?.result.name} src={user?.result.imageUrl}>{user?.result.name.charAt(0)}</Avatar>
+                    <Typography variant="h6">{user.result.name}</Typography>
+                    </div>
+                ) : (
+                    <div>
+                    </div>
+                )}
+            </Toolbar>
             <Toolbar>
                 {user ? (
                     <div>
-                       <Avatar alt={user?.result.name} src={user?.result.imageUrl}>{user?.result.name.charAt(0)}</Avatar>
-                       <Typography variant="h6">{user.result.name}</Typography>
-                       <Button component={Link} to="/home" variant="contained" color="secondary">Home</Button>
-                       <Button component={Link} to="/games" variant="contained" color="secondary">Games</Button>
-                       <Button component={Link} to="/create" variant="contained" color="secondary">Create</Button>
-                       <Button component={Link} to="/explore" variant="contained" color="secondary">Explore</Button>
-                       <Button component={Link} to="/message" variant="contained" color="secondary">Message</Button>
-                       <Button component={Link} to="/inbox" variant="contained" color="secondary">Inbox</Button>
-                       <Button component={Link} to="/find" variant="contained" color="secondary">Find</Button>
-                       <Button variant="contained" color="secondary" onClick={logout}>Logout</Button>
+                       <Button component={Link} to="/home" variant="contained" color="secondary" style={{margin: '5px'}}>Home</Button>
+                       <Button component={Link} to="/games" variant="contained" color="secondary" style={{margin: '5px'}}>Games</Button>
+                       <Button component={Link} to="/create" variant="contained" color="secondary" style={{margin: '5px'}}>Create A Team</Button>
+                       <Button component={Link} to="/explore" variant="contained" color="secondary" style={{margin: '5px'}}>Explore</Button>
+                       <Button component={Link} to="/message" variant="contained" color="secondary" style={{margin: '5px'}}>Message</Button>
+                       <Button component={Link} to="/inbox" variant="contained" color="secondary" style={{margin: '5px'}}>Inbox</Button>
+                       <Button component={Link} to="/find" variant="contained" color="secondary" style={{margin: '5px'}}>Find A Team</Button>
+                       <Button variant="contained" color="secondary" onClick={logout} style={{margin: '5px'}}>Logout</Button>
                     </div>                                   
                 ) : (
                     <div>
