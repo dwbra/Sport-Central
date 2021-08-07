@@ -7,12 +7,15 @@ import { useHistory, useLocation } from 'react-router-dom'
 import { LOGOUT } from '../../constants/actionTypes';
 
 const Navbar = () => {
-
+    // Sets the initial state of the user to be localstorage user profile
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')))
+    // Initialises the redux and router-dom functions
     const dispatch = useDispatch()
     const history = useHistory()
     const location = useLocation()
 
+    // Logout function that dispatches the LOGOUT action type
+    // History will then push the user to the root path and set the user state to be null
     const logout = () => {
         dispatch({type: LOGOUT})
 
@@ -21,6 +24,8 @@ const Navbar = () => {
         setUser(null)
     }
 
+    // useEffect to set the token as the signed in users token upon authentication
+    // Token is set to expire in 1 hour
     useEffect(() => {
         const token = user?.token
 
@@ -35,6 +40,8 @@ const Navbar = () => {
         setUser(JSON.parse(localStorage.getItem('profile')))
     }, [location])
 
+    // Navbar renders buttons that link to the various paths and components once clicked.
+    // The top typography will also link to either the home or root path depending on whether the user is signed in
     return (
         <AppBar position="static" color="inherit">
             <div>

@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 
+// Schema for an ad
 const adSchema = mongoose.Schema ({
     creatorId: {type: String, required: true},
     creatorEmail: {type: String, required: true},

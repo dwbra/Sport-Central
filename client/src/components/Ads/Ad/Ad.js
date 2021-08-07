@@ -10,10 +10,12 @@ const Ad = ( { ad, setCurrentId, distance} ) => {
     const user = JSON.parse(localStorage.getItem('profile'));
     const history = useHistory()
 
+    // Onclick function that uses the useHistory router to re-direct a user to a specific ad once they click on the preview
     const openAd = () => {
         history.push(`/explore/${ad._id}`)
     }
 
+    // Onclick function that redirects a user to the create route but also prefills the ad form with the .id of the clicked ad
     const updateAd = (e) => {
         e.preventDefault()
 
@@ -21,6 +23,7 @@ const Ad = ( { ad, setCurrentId, distance} ) => {
         history.push(`/create`)
     }
 
+    //   Returns the details of the ad, and only shows the update or delete buttons if the isCreator function returns true
     return (
         <Card>
         <ButtonBase onClick={openAd}>

@@ -6,6 +6,7 @@ import distanceCalc from '../LocationFinder/distanceCalc';
 import {Link} from 'react-router-dom'
 
 const Ads = ({currentId, setCurrentId, distance, lat, lng, gender, compOrCasual, sport, skillLevel}) => {
+    // Returns ads as an object of the current state set in the reducer
     const { ads } = useSelector((state) => state.ads)
     const user = JSON.parse(localStorage.getItem('profile'))
 
@@ -14,6 +15,7 @@ const Ads = ({currentId, setCurrentId, distance, lat, lng, gender, compOrCasual,
     // props.lng
     // props.distance
 
+    // Checks to see if the user is logged in, if not, they will be notified and given a button to log in or sign up
     if(!user) {
         return(
             <Paper>
@@ -25,15 +27,16 @@ const Ads = ({currentId, setCurrentId, distance, lat, lng, gender, compOrCasual,
         )
     }
 
-    console.log(gender, compOrCasual, sport)
-
+    // Returns the ads where the distance is within the parameters set by the user
     return (
             <>
             <Typography variant="h2">All ads</Typography>
             <Grid container alignItems="stretch" spacing={3}>
                 {ads?.map((ad) => {
                     let d = Math.round((distanceCalc(ad.gamesLocationLat[0], ad.gamesLocationLng[0], lat, lng)/1000) * 10) / 10
-                    if (d < distance) {
+                    console.log(distance)
+                    console.log(d)
+                    if (d < distance || distance == '') {
                         if (gender === "All" || ad.teamGender === gender){
                             if (compOrCasual === "All" || ad.compOrCasual=== compOrCasual){     
                                 if (sport === "All" || ad.sport === sport){  
