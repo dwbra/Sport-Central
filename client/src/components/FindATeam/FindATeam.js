@@ -9,7 +9,6 @@ import MultiSlider from '../MultiSlider/MultiSlider'
 
 
 const FindATeam = () => {
-
     const [currentId, setCurrentId] = useState(null)
     const dispatch = useDispatch()
 

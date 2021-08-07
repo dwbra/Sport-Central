@@ -11,7 +11,7 @@ const Input = ( {name, handleChange, label, autoFocus, type, handleShowPassword,
                 name={name}
                 onChange={handleChange}
                 variant="outlined"
-                value={textValue}
+                textValue={textValue}
                 required
                 fullWidth
                 label={label}

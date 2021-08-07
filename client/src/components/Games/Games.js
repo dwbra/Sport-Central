@@ -4,11 +4,11 @@ import Game from './Game/Game.js'
 import {useSelector} from 'react-redux'
 
 const Games = ( {setCurrentId} ) => {
+    // UseSelector from redux to set the games object as the current state of the reducer object
     const  { games }  = useSelector((state) => state.games)
     const user = JSON.parse(localStorage.getItem('profile'))
-    useSelector((state) => console.log(state))
-    console.log(games)
 
+    // Returns the grid of all games, with the game passed on as a 
     return (
             <>
             <Typography variant="h2">All games</Typography>

@@ -11,10 +11,15 @@ export const signin = (formData, history) => async (dispatch) => {
 
         dispatch({type: AUTH, data})
 
-
         history.push('/home')
     } catch (error) {
         console.log(error)
+            if (error.message === 'Request failed with status code 400'){
+           alert("Invalid credentials")
+        }
+        if (error.message === 'Request failed with status code 404'){
+           alert("User doesn't exist.")
+        }
     }
 }
 
@@ -31,6 +36,11 @@ export const signup = (formData, history) => async (dispatch) => {
 
         history.push('/home')
     } catch (error) {
-        console.log(error)
+        if (error.message === 'Request failed with status code 403'){
+           alert('User already exists')
+        }
+        if (error.message === 'Request failed with status code 404'){
+           alert("Passwords don't match.")
+        }
     }
 }

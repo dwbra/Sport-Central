@@ -3,6 +3,14 @@ import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 import User from '../models/users.js'
 
+function getStandardResponse(status,message,data){
+    return {
+        status: status,
+        message : message,
+        data : data
+     }
+}
+
 
 export const signin = async (req, res) => {
     // Destructuring the email and password as the request body
@@ -13,22 +21,22 @@ export const signin = async (req, res) => {
         const existingUser = await User.findOne({email})
 
         // If no existing user, return message
-        if(!existingUser) return res.json({message: "User doesn't exist."}).status(404)
+        if(!existingUser) return res.status(404).json({message: "User doesn't exist."})
 
         // Using bcrypt to compare whether a password for the existing user is correct
         const isPasswordCorrect = await bcrypt.compare(password, existingUser.password)
 
         // If the password is incorrect, return the message
-        if(!isPasswordCorrect) return res.json({message: "Invalid credentials"}).status(400)
+        if(!isPasswordCorrect) return res.status(400).json({message: "Invalid credentials"})
 
         // Creating a token through json web token for the signing in user with the users filled in details
         // Creating extra parameters whereby the token expires in 1 hour
         const token = jwt.sign({email: existingUser.email, id: existingUser._id}, 'test', {expiresIn: '1h'})
 
         // Returning the result in json along with their token
-        res.json({result: existingUser, token}).status(200)
+        res.status(200).json({result: existingUser, token})
     } catch (error) {
-        res.json({message: 'Something went wrong.'}).status(500)
+        res.status(500).json({message: 'Something went wrong.'})
     }
 }
 
@@ -41,10 +49,11 @@ export const signup = async (req, res) => {
         const existingUser = await User.findOne({email}) 
         
         // If the user already exists, return the message
-        if(existingUser) return res.json({message: "User already exists."}).status(404)
-
+        if(existingUser) {
+            return res.status(403).send('User already exists')
+        }
         // Check if the passwords match, otherwise return the message
-        if(password !== confirmPassword) return res.json({message: "Passwords don't match."}).status(404)
+        if(password !== confirmPassword) return res.status(404).json({message: "Passwords don't match."})
 
         // Using bycrypt to hash the entered password, with a hashed string of 12 characters
         const hashedPassword = await bcrypt.hash(password, 12)
@@ -56,8 +65,8 @@ export const signup = async (req, res) => {
         const token = jwt.sign({email: result.email, id: result._id}, 'test', {expiresIn: '1h'})
 
         // Returning the new user and their allocated token
-        res.json({result, token}).status(200)
+        res.status(200).json({result, token})
     } catch (error) {
-        res.json({message: 'Something went wrong.'}).status(500)
+        res.status(500).json({message: 'Something went wrong.'})
     }
 }

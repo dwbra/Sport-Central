@@ -10,6 +10,7 @@ import Icon from './icon';
 import { AUTH } from '../../constants/actionTypes';
 import CONFIG from '../config.json'
 
+// Sets the initial state of the user model fields
 const initialState = {
     firstName: '',
     lastName: '',
@@ -19,22 +20,23 @@ const initialState = {
 }
 
 const Auth = () => {
+    // Sets the initial state of showing your password to false
     const [showPassword, setShowPassword] = useState(false)
+    // Sets the initial state of the login form to be false, i.e. in the log in screen and not the sign up screen
     const [isSignup, setisSignup] = useState(false)
+    // Sets the initial state of the form data 
     const [formData, setFormData] = useState(initialState)
+    // Calls the useHistory and useDispatch function from redux
     const dispatch = useDispatch()
     const history = useHistory()
 
+    // handlesubmit function that checks whether the user is in the sign up or sign in page. 
+    // Depending on which page they are on, the user send a post request of the formdata to the server
+    // History is called in the function so that once the user is signed up or logged in, they will be pushed to the root path
     const handleSubmit = (e) => {
-
-
-
         e.preventDefault()
-
         if(isSignup) {
-            console.log("sign up");
             try {
-                
                 dispatch(signup(formData, history))
             } catch (error) {
                 console.log("auth",error);
@@ -48,12 +50,18 @@ const Auth = () => {
         }
     }
 
+    // Function to display the password if clicked
     const handleShowPassword = () => setShowPassword((prevShowPassword) => !prevShowPassword)
 
+    // handlechange for the form fields, assigning the values to the appropriate names
     const handleChange = (e) => {
         setFormData({...formData, [e.target.name]: e.target.value.trim()})
     }
 
+    // Function to return the profile object with the google users details
+    // A token is also generated from the google user successfully signing in
+    // The result and token is sent to the server as a post request
+    // Once the user is authenticated, they will be sent to the /home path
     const googleSuccess = async (res) => {
         const result = res?.profileObj;
         const token = res?.tokenId;
@@ -67,10 +75,12 @@ const Auth = () => {
         }
       };
     
+    //   If there is an error on google auth, the error will display
       const googleError = (error) => {
         console.log(error)
       }
 
+    //   Button handler on whether the user is trying to sign up or log in
     const switchMode = () => {
         setisSignup((previsSignup) => !previsSignup)
         handleShowPassword(false)
