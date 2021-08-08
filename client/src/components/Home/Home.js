@@ -10,6 +10,7 @@ const Home = ({setCurrentId}) => {
     const {ads } = useSelector((state) => state.ads)
     // Destructures the games object from the useSelector state, fetched from the reducer actions
     const { games } = useSelector((state) => state.games)
+    const { messages } = useSelector((state) => state.messages)
     // Retrieves the profile of the signed in user stored in localstorage and sets their details as a variable user
     const user = JSON.parse(localStorage.getItem('profile'))
     // Filters from all the ads in the database to only retreieve the ads where the user created the ad

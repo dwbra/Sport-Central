@@ -10,6 +10,19 @@ export const getMessages = async (req, res) => {
     }
 };
 
+export const getMessage = async (req,res) => {
+    const {id} = req.params
+
+    try {
+        const message = await Message.findById(id)
+
+        res.status(200).json(message)
+    } catch (error) {
+        res.status(404).json({ message: error });
+    }
+}
+
+
 export const createMessage = async (req, res) => {
     const data = req.body;
     const newMessage = new Message({ ...data});

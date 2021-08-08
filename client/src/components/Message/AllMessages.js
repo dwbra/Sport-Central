@@ -1,9 +1,15 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Messages from './Messages.js';
+import {useSelector} from 'react-redux'
 import { TextField, Button, Box} from '@material-ui/core'
+import { useHistory } from 'react-router-dom'
 
 const AllMessages = () => {
     
+    const {messages} = useSelector((state) => state.messages)
+
+
+
     const [state, setState] = useState({
         running: 0,
         otherUsers: [],
@@ -12,6 +18,13 @@ const AllMessages = () => {
     });
 
     const user = JSON.parse(localStorage.getItem('profile'))
+
+    const yourMessages = messages.filter(function(message) {
+        return (user?.result?.email === message?.to || user?.result?.email === message?.from )
+    })
+
+    console.log(messages)
+    console.log(yourMessages)
 
     function updateTextFieldContent(i) {
         setState(state => ({
@@ -52,6 +65,9 @@ const AllMessages = () => {
                 <Box borderRadius="borderRadius" border={1}>
                     {state.otherUsers.map((i)=>(
                         <Button key={"userbutton"+i} onClick={(e) =>openMessages(i)} variant="contained" color="secondary">{i}</Button>
+                    ))}
+                    {yourMessages.map((message, i) => (
+                        <Button key={"userbutton"+i} onClick={(e) => openMessages(message.to)}>{message.to}</Button>
                     ))}
                 </Box>
                 {(() => {
