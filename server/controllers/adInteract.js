@@ -5,7 +5,7 @@ import updateAdWithApplicant from '../middleware/updateAdWithApplicant.js'
 
 
 export const applyForPosition = async (req, res) => {
-    //console.log("From applyForPosition on ads controller ", req.body)
+    console.log("From applyForPosition on ads controller ", req.body)
 
     //get ad by id
     const _id = req.body.adId

@@ -44,16 +44,18 @@ const AdDetail = () => {
     // A game is then created based on the applicant's profile details
     const acceptApplicant = (i) => {
       // sending id to games POST
-      actionTaken()
+      
       dispatch(createGame({adId: id , playerId: ad.applicantIds[i], adPosNumber: ad.applicantPosition[i]}))
+      actionTaken()
     }
 
     // Function for an applicant to apply for the position, based on their gender and number of position available as a variable
     // Passes the applicant's details as a post request, which will then be reviewed by the ad creator in the front end to be accepted in the function above
     const applyForPos = (playerGenders, i) => {
       // non owner applying for a position
-      actionTaken()
+      
       dispatch(applyForPosition({adId: id , applicantId: user?.result?._id, applicantName: user?.result?.name, applicantGender: playerGenders, applicantPosition: i}))
+      actionTaken()
     }
 
     if(!ad) return (null)

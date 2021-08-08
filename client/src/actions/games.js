@@ -6,7 +6,8 @@ import * as api from '../api/index.js'
 // Andrew's code for creating games
 export const createGame = (ad, game) => async (dispatch) => {
     try {
-        const {data} = await api.createGame(game)
+
+        const {data} = await api.createGame(ad)
         dispatch({type: CREATE, payload: data})
     } catch (error) {
         console.log(error)
