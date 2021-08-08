@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import GoogleLogin from 'react-google-login';
-import {Container, Paper, Typography, Avatar, Button, Grid} from '@material-ui/core'
+import {Container, Paper, Typography, Avatar, Button, Grid } from '@material-ui/core'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
 import Input from './Input.js'
 import { useDispatch } from 'react-redux';
@@ -35,11 +35,18 @@ const Auth = () => {
     // History is called in the function so that once the user is signed up or logged in, they will be pushed to the root path
     const handleSubmit = (e) => {
         e.preventDefault()
-
         if(isSignup) {
-            dispatch(signup(formData, history))
+            try {
+                dispatch(signup(formData, history))
+            } catch (error) {
+                console.log("auth",error);
+            }
         } else {
-            dispatch(signin(formData, history))
+            try {
+                dispatch(signin(formData, history))
+            } catch (error) {
+                console.log("auth",error);
+            }
         }
     }
 
@@ -48,7 +55,7 @@ const Auth = () => {
 
     // handlechange for the form fields, assigning the values to the appropriate names
     const handleChange = (e) => {
-        setFormData({...formData, [e.target.name]: e.target.value})
+        setFormData({...formData, [e.target.name]: e.target.value.trim()})
     }
 
     // Function to return the profile object with the google users details
@@ -93,13 +100,13 @@ const Auth = () => {
                             {
                                 isSignup && (
                                     <>
-                                        <Input name="firstName" label="First Name" handleChange={handleChange} autoFocus half />
-                                        <Input name="lastName" label="Last Name" handleChange={handleChange} half />
+                                        <Input name="firstName" label="First Name" handleChange={handleChange} autoFocus half textValue={formData.firstName}/>
+                                        <Input name="lastName" label="Last Name" handleChange={handleChange} half textValue={formData.lastName}/>
                                     </>
                                 )}
-                                <Input name="email" label="Email Address" type="email" handleChange={handleChange} />
-                                <Input name="password" label="Password" handleChange={handleChange} type={showPassword ? "text" : "password"} handleShowPassword={handleShowPassword}/>
-                                { isSignup && <Input name="confirmPassword" label="Repeat Password" handleChange={handleChange} type="password"/>}
+                                <Input  name="email" label="Email Address" type="email" handleChange={handleChange} textValue={formData.email} />
+                                <Input  name="password" label="Password" handleChange={handleChange}  type="password" textValue={formData.password} />
+                                { isSignup && <Input  name="confirmPassword" label="Repeat Password" handleChange={handleChange} type="password" textValue={formData.confirmPassword} /> }
                         </Grid>
                         <Button type="submit" fullWidth variant="contained" color="primary">
                             {isSignup ? 'Sign Up' : 'Sign In'}
@@ -131,7 +138,6 @@ const Auth = () => {
                     </form>
                 </Paper>
             </Container>
-            <h1>Auth</h1>
         </div>
     )
 }

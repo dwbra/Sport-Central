@@ -34,8 +34,6 @@ const Ads = ({currentId, setCurrentId, distance, lat, lng, gender, compOrCasual,
             <Grid container alignItems="stretch" spacing={3}>
                 {ads?.map((ad) => {
                     let d = Math.round((distanceCalc(ad.gamesLocationLat[0], ad.gamesLocationLng[0], lat, lng)/1000) * 10) / 10
-                    console.log(distance)
-                    console.log(d)
                     if (d < distance || distance == '') {
                         if (gender === "All" || ad.teamGender === gender){
                             if (compOrCasual === "All" || ad.compOrCasual=== compOrCasual){     

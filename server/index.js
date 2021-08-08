@@ -14,8 +14,6 @@ import gameRoutes from './routes/games.js';
 import sportRoutes from './routes/sports.js';
 import adInteractRoutes from './routes/adInteract.js';
 
-
-
 //initiate express to be able to call methods from.
 const app = express();
 dotenv.config();
@@ -27,6 +25,7 @@ app.get('/', (req, res) => {
 app.use(express.json({limit: "30mb", extended: true}));
 app.use(express.urlencoded({limit: "30mb", extended: true}));
 app.use(cors());
+
 
 //use express to set the route path for app post routes
 app.use('/ads', adRoutes);
