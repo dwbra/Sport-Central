@@ -8,6 +8,7 @@ import {Container} from '@material-ui/core'
 import {useDispatch } from 'react-redux'
 import { getAds } from './actions/ads.js'
 import { getGames } from './actions/games.js'
+import { getMessages } from './actions/messages.js'
 import Form from './components/Form/Form.js'
 import Navbar from './components/Navbar/Navbar.js'
 import Home from './components/Home/Home.js'
@@ -22,18 +23,26 @@ import AllMessages from './components/Message/AllMessages.js'
 
 
 function App() {
-
+  // React hook to set the current id of the ads to initially be null
   const [currentId, setCurrentId] = useState(null)
+  // Initialises the useDispatch function from redux
   const dispatch = useDispatch()
 
+  // useEffect that will dispatch to get ads and re-run every time there is a change in the variables in the dependency array
   useEffect(() => {
     dispatch(getAds())
   }, [currentId, dispatch])
 
+  // useEffect that will dispatch to get games and re-run every time there is a change in the variables in the dependency array
   useEffect(() => {
     dispatch(getGames())
   }, [currentId, dispatch])
 
+  useEffect(() => {
+    dispatch(getMessages())
+  }, [currentId, dispatch])
+
+  // Returns the navbar components, along with all the relevant routes for the buttons in the navbar component
   return (
       <Router>
         <Container>
@@ -44,10 +53,11 @@ function App() {
             <Route path="/auth" exact component={Auth}/>
             <Route path="/inbox" exact component={Inbox}/>
             <Route path="/create" exact component={() => <Form currentId={currentId} setCurrentId={setCurrentId} />}/>
+            <Route path="/explore" exact component={() => <Ads setCurrentId={setCurrentId} distance={''} gender={'All'} compOrCasual={'All'} skillLevel={'All'} sport={'All'} />}/>
             <Route path="/message" exact component={AllMessages}/>
-            <Route path="/explore" exact component={() => <Ads setCurrentId={setCurrentId} />}/>
             <Route path="/explore/:id" component={AdDetail} />
             <Route path="/find" exact component={FindATeam}/>
+            {/* <Route path="/messages" exact component={() => <Messages setCurrentId={setCurrentId} />}/> */}
             <Route path="/games" exact component={() => <Games setCurrentId={setCurrentId} />}/>
           </Switch>
         </Container>
