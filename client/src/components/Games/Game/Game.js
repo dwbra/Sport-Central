@@ -9,6 +9,7 @@ const Game = ( {game, setCurrentId} ) => {
     const user = JSON.parse(localStorage.getItem('profile'));
     const history = useHistory()
 
+    // Returns the game with the game details, with the game object being passed as a destructured variable in the Game object
     return (
         <div>
             <Typography variant="h4">{game.teamName}</Typography>

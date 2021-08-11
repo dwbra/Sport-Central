@@ -1,5 +1,6 @@
 import React from 'react';
 
+// Styling to set the user logged in icon 
 const icon = () => (
   <svg style={{ width: '20px', height: '20px' }} viewBox="0 0 24 24">
     <path

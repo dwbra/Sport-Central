@@ -5,6 +5,8 @@ import User from '../models/users.js'
 import creatingGames from '../middleware/creatingGames.js'
 import updateAdWithFilled from '../middleware/updateAdWithFilled.js'
 
+// Async function in the server to find all games in the database
+// Then takes the Games object in json as a response
 export const getGames = async (req, res) => {
     try {
         const Games = await Game.find();
@@ -14,6 +16,8 @@ export const getGames = async (req, res) => {
     }
 };
 
+// Destructures id to be the params of the request
+// Assignes a variable game after finding a game by the id in the request
 export const getGame = async (req,res) => {
     const {id} = req.params
 
@@ -30,8 +34,8 @@ export const createGame = async (req, res) => {
     const adId = req.body.adId;
     const playerId = req.body.playerId;
     const adPosNumber = req.body.adPosNumber;
-    //console.log("Creating games from ad: ", adId)
-    //console.log("Creating games to player : ", playerId)
+    console.log("Creating games from ad: ", adId)
+    console.log("Creating games to player : ", playerId)
 
     //### get ad from passed info.
     const ad = await AdListing.findById(adId)
@@ -47,7 +51,7 @@ export const createGame = async (req, res) => {
     //console.log("creatingGames result : ", gamesResult)
 
     // create to new games from the gamesResult array.
-    //console.log("Game info",gamesResult)
+    console.log("Game info",gamesResult)
     if (gamesResult[0] !== 'error wrong Ad Position Number') {
         for(var i = 0; i < gamesResult.length; i++) {
             const newGame = new Game(gamesResult[i]);

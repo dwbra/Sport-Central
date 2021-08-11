@@ -3,6 +3,14 @@ import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 import User from '../models/users.js'
 
+function getStandardResponse(status,message,data){
+    return {
+        status: status,
+        message : message,
+        data : data
+     }
+}
+
 
 export const signin = async (req, res) => {
     // Destructuring the email and password as the request body
@@ -41,8 +49,9 @@ export const signup = async (req, res) => {
         const existingUser = await User.findOne({email}) 
         
         // If the user already exists, return the message
-        if(existingUser) return res.status(404).json({message: "User already exists."})
-
+        if(existingUser) {
+            return res.status(403).send('User already exists')
+        }
         // Check if the passwords match, otherwise return the message
         if(password !== confirmPassword) return res.status(404).json({message: "Passwords don't match."})
 

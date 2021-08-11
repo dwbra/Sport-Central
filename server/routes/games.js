@@ -4,6 +4,7 @@ import auth from '../middleware/auth.js'
 
 const router = express.Router();
 
+// Routes for games
 router.get('/', getGames);
 router.get('/:id', getGame);
 router.post('/',  createGame);

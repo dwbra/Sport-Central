@@ -10,16 +10,21 @@ import {Link} from 'react-router-dom'
 
 const AdDetail = () => {
 
+    // UseState that sets the original valur of whether the ad has been accepted or not to be false
     const [userState, setUserState] = useState({
         action: false,
     });
 
+    // Returns the ad as an object in the current state
     const {ad} = useSelector((state) => state.ads) // removed ads
+    // Calls the useDispatch functions from redux
     const dispatch = useDispatch()
     const { id } = useParams()
+    // Sets the variable for user as the local storage logged in user
     const user = JSON.parse(localStorage.getItem('profile'))
 
 
+    // Useeffect that dispatches the ad to get the specific ad with the clicked Id
     useEffect(() => {
         dispatch(getAd(id))
     }, [id, dispatch])
@@ -41,16 +46,22 @@ const AdDetail = () => {
       document.location.href='/message';
     }
 
+    // Function to accept an applicant, with them filling the index based on the positions available on the team
+    // A game is then created based on the applicant's profile details
     const acceptApplicant = (i) => {
       // sending id to games POST
-      actionTaken()
+      
       dispatch(createGame({adId: id , playerId: ad.applicantIds[i], adPosNumber: ad.applicantPosition[i]}))
+      actionTaken()
     }
 
+    // Function for an applicant to apply for the position, based on their gender and number of position available as a variable
+    // Passes the applicant's details as a post request, which will then be reviewed by the ad creator in the front end to be accepted in the function above
     const applyForPos = (playerGenders, i) => {
       // non owner applying for a position
-      actionTaken()
+      
       dispatch(applyForPosition({adId: id , applicantId: user?.result?._id, applicantName: user?.result?.name, applicantGender: playerGenders, applicantPosition: i}))
+      actionTaken()
     }
 
     if(!ad) return (null)

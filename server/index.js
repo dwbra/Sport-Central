@@ -23,6 +23,7 @@ app.use(express.json({limit: "30mb", extended: true}));
 app.use(express.urlencoded({limit: "30mb", extended: true}));
 app.use(cors());
 
+
 //use express to set the route path for app post routes
 app.use('/ads', adRoutes);
 app.use('/auth', authRoutes);
