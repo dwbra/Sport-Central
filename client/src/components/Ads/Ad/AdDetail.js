@@ -29,6 +29,7 @@ const AdDetail = () => {
         dispatch(getAd(id))
     }, [id, dispatch])
 
+
     
     const actionTaken = () => {
       console.log("clicked")
@@ -38,6 +39,11 @@ const AdDetail = () => {
           setUserState({ action: false })
           window.location.reload(false)
         }
+    }
+
+    function contactCreator() {
+      alert(`Please copy this email address. You will be redirected shortly and need to use it to start a chat: ${ad.creatorEmail}`)
+      document.location.href='/message';
     }
 
     // Function to accept an applicant, with them filling the index based on the positions available on the team
@@ -79,6 +85,7 @@ const AdDetail = () => {
             <Typography variant="h6">Created by: {ad.name}</Typography>
             <Typography variant="h6">Skill Level: {ad.skillLevel}</Typography>
             <Typography variant="h6">Date time: {ad.gamesDateTime[0]}</Typography>
+            <Button variant="outlined" color="primary" onClick={contactCreator}>Message Organiser</Button>
             <Typography gutterBottom variant="body1" component="p">{moment(ad.createdAt).fromNow()}</Typography>
             {(() => {
                 if (ad.creatorId === user?.result?._id) {

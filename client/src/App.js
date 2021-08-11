@@ -8,6 +8,7 @@ import {Container} from '@material-ui/core'
 import {useDispatch } from 'react-redux'
 import { getAds } from './actions/ads.js'
 import { getGames } from './actions/games.js'
+import { getMessages } from './actions/messages.js'
 import Form from './components/Form/Form.js'
 import Navbar from './components/Navbar/Navbar.js'
 import Home from './components/Home/Home.js'
@@ -37,6 +38,10 @@ function App() {
     dispatch(getGames())
   }, [currentId, dispatch])
 
+  useEffect(() => {
+    dispatch(getMessages())
+  }, [currentId, dispatch])
+
   // Returns the navbar components, along with all the relevant routes for the buttons in the navbar component
   return (
       <Router>
@@ -52,6 +57,7 @@ function App() {
             <Route path="/message" exact component={AllMessages}/>
             <Route path="/explore/:id" component={AdDetail} />
             <Route path="/find" exact component={FindATeam}/>
+            {/* <Route path="/messages" exact component={() => <Messages setCurrentId={setCurrentId} />}/> */}
             <Route path="/games" exact component={() => <Games setCurrentId={setCurrentId} />}/>
           </Switch>
         </Container>

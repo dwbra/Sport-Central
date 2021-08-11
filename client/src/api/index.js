@@ -28,6 +28,7 @@ export const applyForPosition = (updatedAd) => API.patch(`/adInteract`, updatedA
 export const signIn = (formData) => API.post('/user/signin', formData)
 export const signUp = (formData) => API.post('/user/signup', formData)
 
+export const fetchMessage = (id) => API.get(`/messages/${id}`)
 export const getMessages = () => API.get('/messages');
 export const createMessage = (newMessage) => API.post('/messages', newMessage); 
 export const updateMessage = (id, updatedMessage) => API.patch(`/messages/${id}`, updatedMessage);
