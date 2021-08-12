@@ -1,0 +1,36 @@
+.nav-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.toolbar {
+    display: flex;
+    justify-content: flex-start;
+    height: 100vh;
+}
+.avatar {
+    width: 200px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 300px;
+}
+.navbar {
+    width: 30%;
+}
+
+@media screen and (max-width: 1023px) {
+    .toolbar {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+    .nav-buttons {
+        flex-direction: row;
+    }
+    .button {
+        width: 10%;
+    }
+}

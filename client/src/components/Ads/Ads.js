@@ -4,6 +4,7 @@ import {useSelector} from 'react-redux'
 import Ad from './Ad/Ad.js'
 import distanceCalc from '../LocationFinder/distanceCalc';
 import {Link} from 'react-router-dom'
+import styles from './Ad/styles.css'
 
 const Ads = ({currentId, setCurrentId, distance, lat, lng, gender, compOrCasual, sport, skillLevel}) => {
     // Returns ads as an object of the current state set in the reducer
@@ -29,7 +30,7 @@ const Ads = ({currentId, setCurrentId, distance, lat, lng, gender, compOrCasual,
 
     // Returns the ads where the distance is within the parameters set by the user
     return (
-            <>
+            <div style={{width: '90%'}}>
             <Typography variant="h2">All ads</Typography>
             <Grid container alignItems="stretch" spacing={3}>
                 {ads?.map((ad) => {
@@ -51,7 +52,7 @@ const Ads = ({currentId, setCurrentId, distance, lat, lng, gender, compOrCasual,
                     }
                 })}
             </Grid>
-            </>
+            </div>
     )
 }
 

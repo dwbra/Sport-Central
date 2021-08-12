@@ -1,0 +1,11 @@
+.card-items {
+    display: flex;
+    flex-direction: column;
+    margin-left: 8px;
+    margin-top: 8px;
+}
+.card-tiles {
+    display: flex;
+    align-items: left;
+    justify-content: left;
+}

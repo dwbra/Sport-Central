@@ -4,6 +4,7 @@ import {useSelector} from 'react-redux'
 import Ad from '../Ads/Ad/Ad.js'
 import Games from '../Games/Games.js'
 import Game from '../Games/Game/Game.js'
+import styles from './styles.css'
 
 const Home = ({setCurrentId}) => {
     // Destructures the ad object from the useSelector state, fetched from the reducer actions
@@ -34,7 +35,8 @@ const Home = ({setCurrentId}) => {
         // If the user is signed in, it will display their upcoming games and also the ads they have created on the screen
     } else {
         return (
-            <>
+            <div className="home-container">
+                <Typography variant="h2">Home Page</Typography>
             <Typography variant="h4" style={{margin: '10px'}}>Your Upcoming Games</Typography>
             {(() => {
                 if (yourGames.length > 0) {
@@ -49,11 +51,11 @@ const Home = ({setCurrentId}) => {
                     )
                 } else {
                     return (
-                        <Typography variant="h6" style={{margin: '10px'}}>You have no game at the moment</Typography>
+                        <Typography variant="h6" style={{margin: '10px'}}>You have no upcoming games</Typography>
                     )
                 }
             })()} 
-            <Typography variant="h4" style={{margin: '10px'}}>Your Ads</Typography>
+            <Typography variant="h4" style={{margin: '10px'}}>Your Created Ads</Typography>
             {(() => {
                 if (result.length > 0) {
                     return (
@@ -71,7 +73,7 @@ const Home = ({setCurrentId}) => {
                     )
                 }
             })()} 
-            </>
+            </div>
         )
     }
 }

@@ -1,19 +1,34 @@
 import React from 'react'
 import {Button, Typography, Paper} from '@material-ui/core'
 import {Link} from 'react-router-dom'
+import IndexImage from './index-image2.jpg' 
+import styles from './styles.css'
 
 const Index = () => {
     const user = JSON.parse(localStorage.getItem('profile'))
 
     if (!user) {
         return (
-            <Paper>
-                <Typography variant="h2">
-                Welcome to Sport Central
-                </Typography>
-                <Button component={Link} to="/auth" variant="contained" color="primary">Sign Up/Log In</Button>
-            </Paper>
-
+            <div class="index-container">
+                <div class="image-container">
+                    <img src={IndexImage} alt="image of hockey players huddled" class="index-image"/>
+                </div>
+                <div class="login-container">
+                    <Typography variant="h2">
+                        Welcome to Sport Central
+                    </Typography>
+                    <br></br>
+                    <Typography variant="h3">
+                        Want to play but can't find a team?
+                    </Typography>
+                    <br></br>
+                    <Typography variant="h3">
+                        Don't worry we got you covered!
+                    </Typography>
+                    <br></br>
+                    <Button component={Link} to="/auth" variant="contained" color="primary" style={{width: '50%', height: '60px', fontSize: '23px'}}>Sign Up/Log In</Button>
+                </div>
+            </div>
         )
     } else {
         return (

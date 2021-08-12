@@ -88,15 +88,14 @@ const Auth = () => {
 
     return (
         <div>
-            <Container component="main" maxWidth="xs">
-                
+            <Container component="main" maxWidth="xs" >
                 <Paper elevation={3}>
                     <Avatar>
                         <LockOutlinedIcon />
                     </Avatar>
                     <Typography variant="h5">{isSignup ? 'Sign Up' : 'Sign In'}</Typography>
                     <form onSubmit={handleSubmit}>
-                        <Grid container spacing={2}>
+                        <Grid container spacing={2} alignItems="center" justifyContent="center">
                             {
                                 isSignup && (
                                     <>

@@ -20,9 +20,11 @@ import FindATeam from './components/FindATeam/FindATeam.js'
 import Ads from './components/Ads/Ads.js';
 import Games from './components/Games/Games.js'
 import AllMessages from './components/Message/AllMessages.js'
+import styles from './App.css'
 
 
 function App() {
+  const user = JSON.parse(localStorage.getItem('profile'))
   // React hook to set the current id of the ads to initially be null
   const [currentId, setCurrentId] = useState(null)
   // Initialises the useDispatch function from redux
@@ -38,15 +40,19 @@ function App() {
     dispatch(getGames())
   }, [currentId, dispatch])
 
+  // useEffect that will dispatch to get messages and re-run every time there is a change in the variables in the dependency array
   useEffect(() => {
     dispatch(getMessages())
   }, [currentId, dispatch])
 
   // Returns the navbar components, along with all the relevant routes for the buttons in the navbar component
   return (
+    <div className="page">
       <Router>
-        <Container>
+        <div className="container">
+          <div className="navbar">
           <Navbar />
+          </div>
           <Switch>
             <Route path="/" exact component={Index}/>
             <Route path="/home" exact component={() => <Home setCurrentId={setCurrentId} />}/>
@@ -60,8 +66,9 @@ function App() {
             {/* <Route path="/messages" exact component={() => <Messages setCurrentId={setCurrentId} />}/> */}
             <Route path="/games" exact component={() => <Games setCurrentId={setCurrentId} />}/>
           </Switch>
-        </Container>
+          </div>
       </Router>
+    </div>
   );
 
 }

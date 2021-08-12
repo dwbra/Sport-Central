@@ -1,0 +1,21 @@
+.index-image {
+    width: auto;
+    height: 95vh;
+    margin: 10px;
+}
+.index-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.login-container {
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.image-container {
+    width: 50%;
+}
