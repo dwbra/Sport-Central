@@ -1,10 +1,10 @@
 import axios from 'axios';
 
 // For deployment
-// const API = axios.create({ baseURL: 'https://sport-central.herokuapp.com' });
+const API = axios.create({ baseURL: 'https://sport-central-project.herokuapp.com/' });
 
 // For Local
-const API = axios.create({ baseURL: 'http://localhost:5000' });
+// const API = axios.create({ baseURL: 'http://localhost:5000' });
 
 // Allocating the Bearer token to be the token of the signed in user
 // User token is stored in local storage to be accessed

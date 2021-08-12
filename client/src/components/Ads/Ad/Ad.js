@@ -25,19 +25,17 @@ const Ad = ( { ad, setCurrentId, distance} ) => {
 
     //   Returns the details of the ad, and only shows the update or delete buttons if the isCreator function returns true
     return (
-        <Card>
-        <ButtonBase onClick={openAd}>
-            <div>
-                <Typography variant="h4">{ad.teamName}</Typography>
-                <Typography variant="h6">{ad.sport}</Typography>
-                <Typography variant="body2">{moment(ad.createdAt).fromNow()}</Typography>
-                <Typography variant="body2">Date time: {ad.gamesDateTime[0]}</Typography>
-                <Typography variant="body1">distance away {distance} km</Typography>
+
+        <ButtonBase onClick={openAd} style={{width: '100%'}}>
+        <Card style={{backgroundColor: '#ededed', width: '100%'}}>
+            <div className="card-items">
+                <Typography className="card-tiles" variant="h4">{ad.teamName}</Typography>
+                <Typography className="card-tiles" variant="h6">{ad.sport}</Typography>
+                <Typography className="card-tiles" variant="body2">{moment(ad.createdAt).fromNow()}</Typography>
+                <Typography className="card-tiles" variant="body2">Date time: {ad.gamesDateTime[0]}</Typography>
+                <Typography className="card-tiles" variant="body1">distance away {distance} km</Typography>
+                <Typography className="card-tiles" variant="body2" color="textSecondary">{ad.skillLevel}</Typography>
             </div>
-            <div>
-                <Typography variant="body2" color="textSecondary">{ad.skillLevel}</Typography>
-            </div>
-        </ButtonBase>
             <CardActions>
             {(user?.result?.googleId === ad?.creatorId || user?.result?._id === ad?.creatorId) && (
                 <Button style={{color: 'black'}} size="small" onClick={updateAd}>
@@ -52,6 +50,7 @@ const Ad = ( { ad, setCurrentId, distance} ) => {
             )}   
             </CardActions>
         </Card>
+        </ButtonBase>
     )
 }
 

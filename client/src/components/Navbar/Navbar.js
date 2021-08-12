@@ -47,7 +47,7 @@ const Navbar = () => {
             <Toolbar className="toolbar">
                 {user ? (
                     <div className="nav-buttons">
-                       <Button component={Link} to="/home" variant="contained" color="secondary" style={{margin: '5px', width: '90%'}}>Home</Button>
+                       <Button component={Link} to="/home" className="button" variant="contained" color="secondary" style={{margin: '5px', width: '90%'}}>Home</Button>
                        {/* <Button component={Link} to="/games" variant="contained" color="secondary" style={{margin: '5px', width: '90%'}}>Games</Button> */}
                        <Button component={Link} to="/create" variant="contained" color="secondary" style={{margin: '5px', width: '90%'}}>Create A Team</Button>
                        <Button component={Link} to="/explore" variant="contained" color="secondary" style={{margin: '5px', width: '90%'}}>Explore</Button>

@@ -399,7 +399,7 @@ const Form = ({currentId, setCurrentId}) => {
 
     if(searchComps.adCreated === false) {
         return (
-            <Paper>
+            <Paper style={{width: '90%'}}>
                 <form autoComplete="off" noValidate onSubmit={handleSubmit} style={{width: '90%', margin: 'auto'}}>
 
                     {/* top message */}

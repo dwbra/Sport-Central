@@ -15,7 +15,22 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    margin-top: 300px;
 }
 .navbar {
     width: 30%;
+}
+
+@media screen and (max-width: 1023px) {
+    .toolbar {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+    .nav-buttons {
+        flex-direction: row;
+    }
+    .button {
+        width: 10%;
+    }
 }

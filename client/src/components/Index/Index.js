@@ -19,7 +19,7 @@ const Index = () => {
                     </Typography>
                     <br></br>
                     <Typography variant="h3">
-                        Wan't to play but can't find a team?
+                        Want to play but can't find a team?
                     </Typography>
                     <br></br>
                     <Typography variant="h3">

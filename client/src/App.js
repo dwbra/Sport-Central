@@ -40,6 +40,7 @@ function App() {
     dispatch(getGames())
   }, [currentId, dispatch])
 
+  // useEffect that will dispatch to get messages and re-run every time there is a change in the variables in the dependency array
   useEffect(() => {
     dispatch(getMessages())
   }, [currentId, dispatch])
@@ -49,7 +50,9 @@ function App() {
     <div className="page">
       <Router>
         <div className="container">
-        <Navbar />
+          <div className="navbar">
+          <Navbar />
+          </div>
           <Switch>
             <Route path="/" exact component={Index}/>
             <Route path="/home" exact component={() => <Home setCurrentId={setCurrentId} />}/>

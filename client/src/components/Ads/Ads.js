@@ -30,7 +30,7 @@ const Ads = ({currentId, setCurrentId, distance, lat, lng, gender, compOrCasual,
 
     // Returns the ads where the distance is within the parameters set by the user
     return (
-            <div className="ads-container">
+            <div style={{width: '90%'}}>
             <Typography variant="h2">All ads</Typography>
             <Grid container alignItems="stretch" spacing={3}>
                 {ads?.map((ad) => {

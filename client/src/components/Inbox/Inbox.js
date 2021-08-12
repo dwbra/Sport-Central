@@ -18,12 +18,12 @@ const Inbox = () => {
         )
     } else {
         return (
-            <>
+            <div className="inbox-container" style={{width: '90%'}}>
             <Typography variant="h2">
             This is the Inbox Page
             </Typography>
             <AllMessages />
-            </>
+            </div>
         )
     }
 }
