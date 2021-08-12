@@ -51,8 +51,8 @@ function App() {
             <Route path="/" exact component={Index}/>
             <Route path="/home" exact component={() => <Home setCurrentId={setCurrentId} />}/>
             <Route path="/auth" exact component={Auth}/>
-            <Route path="/inbox" exact component={Inbox}/>
-            <Route path="/create" exact component={() => <Form currentId={currentId} setCurrentId={setCurrentId} />}/>
+            <Route path="/inbox" exact component={() => <Inbox startingUserEmail={localStorage.getItem('Messaging user')} />}/>
+            <Route path="/create" exact component={() => <Form currentId={currentId} setCurrentId={setCurrentId} />}/> 
             <Route path="/explore" exact component={() => <Ads setCurrentId={setCurrentId} distance={''} gender={'All'} compOrCasual={'All'} skillLevel={'All'} sport={'All'} />}/>
             <Route path="/message" exact component={AllMessages}/>
             <Route path="/explore/:id" component={AdDetail} />
