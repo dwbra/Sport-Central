@@ -4,26 +4,76 @@ import {useSelector} from 'react-redux'
 import { TextField, Button, Box} from '@material-ui/core'
 import { useHistory } from 'react-router-dom'
 
-const AllMessages = () => {
+const AllMessages = ({startingUserEmail}) => {
     
     const {messages} = useSelector((state) => state.messages)
 
+    const startWithUser = () => {
+        //console.log("startingUserEmail",startingUserEmail)
+        if (startingUserEmail === 'null') {
+            return ([])
+        } else {
+            localStorage.setItem('Messaging user', null)
+            return ([startingUserEmail,])
+        }
+    }
+
     const [state, setState] = useState({
+        allMessage: messages,
         running: 0,
-        otherUsers: [],
+        otherUserEmail: startWithUser(),
         textFieldContent: '',
         currentMessagingUser: '',
     });
 
     const user = JSON.parse(localStorage.getItem('profile'))
+    
 
-    const yourMessages = messages.filter(function(message) {
-        return (user?.result?.email === message?.to || user?.result?.email === message?.from )
-    })
+    // if messages is diffort to what is in the state update it
+    if (messages !== state.allMessage){
+        setState(state => ({
+            ...state,
+            allMessage: messages,
+        }));
+    }
 
-    console.log(messages)
-    console.log(yourMessages)
+    // every 2 secs check for new messages to or from user. 
+    useEffect(() => {
+        const interval = setInterval(() => {
+            let array = state.otherUserEmail
+            for(var i = 0; i < state.allMessage.length ; i++) {
+                if (user?.result?.email === state.allMessage[i].to){
+                    if(array.indexOf(state.allMessage[i].from) === -1 ){
+                        array.push(state.allMessage[i].from)
+                    }
+                }
+                if (user?.result?.email === state.allMessage[i].from){
+                    if(array.indexOf(state.allMessage[i].to) === -1 ){
+                        array.push(state.allMessage[i].to)
+                    }
+                }  
+            }
+            setState(state => ({
+                ...state,
+                otherUsers: array,
+            }));
+        }, 2000);
+    }, [state.running, state.allMessage]);
 
+    // start the above setInterval useEffect
+    useEffect(() => { 
+        setState(setState => ({
+            ...state,
+            running: state.running + 1
+        }));
+    }, []);
+
+
+    //console.log("messages",messages)
+    //console.log("state.allMessage",state.allMessage)
+    //console.log(state.otherUsers)
+
+    // handle the change of the text field
     function updateTextFieldContent(i) {
         setState(state => ({
             ...state,
@@ -31,6 +81,7 @@ const AllMessages = () => {
         }));
     }
 
+    // adds a user to the otherUsers state array
     function addUser(i) {
         let array = state.otherUsers
         if(user?.result?.email !== state.textFieldContent){
@@ -43,24 +94,13 @@ const AllMessages = () => {
         }
     }
 
-    // const openMessages = useCallback((i) => {
-    //     setState(state => ({
-    //         ...state,
-    //         currentMessagingUser: i,
-    //     }));
-    // }, [setState])
-
-    // useEffect((state) => {
-    //     openMessages()
-    // }, [state.currentMessagingUser])
-
+    // opens the massager
     function openMessages(i) {
         setState(state => ({
             ...state,
             currentMessagingUser: i,
         }));
     }
-
 
     return (
         <div style={{padding: '10px', maxWidth: '100%', marginTop: '5px'}}>
@@ -72,19 +112,25 @@ const AllMessages = () => {
             </Box>
             <Box borderRadius="borderRadius" border={1}>
                 <Box borderRadius="borderRadius" border={1}>
-                    {state.otherUsers.map((i)=>(
+                    {state.otherUserEmail.map((i)=>(
                         <Button key={"userbutton"+i} onClick={(e) =>openMessages(i)} variant="contained" color="secondary">{i}</Button>
-                    ))}
-                    {yourMessages.map((message, i) => (
-                        <Button key={"userbutton"+i} onClick={(e) => openMessages(message.to)}>{message.to}</Button>
                     ))}
                 </Box>
                 {(() => {
                     if(state.currentMessagingUser !== ''){
-                        console.log("open messaging to ",state.currentMessagingUser )
                         return (
-                            <Messages otherUserEmail={state.currentMessagingUser}/>
+                            <div key={state.currentMessagingUser}>
+                                <Messages otherUserEmail={state.currentMessagingUser}/>
+                            </div>
                         )
+                    } else {
+                        if (startingUserEmail !== 'null'){
+                            return (
+                                <div key={state.currentMessagingUser}>
+                                    <Messages otherUserEmail={startingUserEmail}/>
+                                </div>
+                            )
+                        }
                     }
                 })()}
             </Box>

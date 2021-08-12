@@ -9,6 +9,8 @@ import { applyForPosition } from '../../../actions/adInteract.js'
 import {Link} from 'react-router-dom'
 import styles from './styles.css'
 
+import {createMessage} from '../../../actions/messages.js'
+
 const AdDetail = () => {
 
     // UseState that sets the original valur of whether the ad has been accepted or not to be false
@@ -43,8 +45,8 @@ const AdDetail = () => {
     }
 
     function contactCreator() {
-      alert(`Please copy this email address. You will be redirected shortly and need to use it to start a chat: ${ad.creatorEmail}`)
-      document.location.href='/message';
+      localStorage.setItem('Messaging user', ad.creatorEmail)
+      document.location.href="/inbox";
     }
 
     // Function to accept an applicant, with them filling the index based on the positions available on the team
@@ -60,7 +62,9 @@ const AdDetail = () => {
     // Passes the applicant's details as a post request, which will then be reviewed by the ad creator in the front end to be accepted in the function above
     const applyForPos = (playerGenders, i) => {
       // non owner applying for a position
-      
+      let appliedMessage = user?.result?.name + " applied for position " + i + " on team: " + ad.teamName
+
+      dispatch(createMessage({to: ad.creatorEmail, from: user?.result?.email, content: appliedMessage , toHasRead: false }))
       dispatch(applyForPosition({adId: id , applicantId: user?.result?._id, applicantName: user?.result?.name, applicantGender: playerGenders, applicantPosition: i}))
       actionTaken()
     }
