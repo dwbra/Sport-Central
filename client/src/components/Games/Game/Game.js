@@ -12,9 +12,12 @@ const Game = ( {game, setCurrentId} ) => {
     // Returns the game with the game details, with the game object being passed as a destructured variable in the Game object
     return (
         <div>
-            <Typography variant="h4">{game.teamName}</Typography>
-            <Typography variant="h6">{game.sport}</Typography>
-            <Typography variant="body2">{moment(game.gamesDateTime).fromNow()}</Typography>
+            <Card>
+                <Typography variant="h4">{game.teamName}</Typography>
+                <Typography variant="h6">{game.sport}</Typography>
+                <Typography variant="body2">{moment(game.gamesDateTime).fromNow()}</Typography>
+            </Card>
+
         </div>
     )
 }

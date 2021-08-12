@@ -400,7 +400,7 @@ const Form = ({currentId, setCurrentId}) => {
     if(searchComps.adCreated === false) {
         return (
             <Paper>
-                <form autoComplete="off" noValidate onSubmit={handleSubmit} style={{maxWidth: '50%', margin: 'auto'}}>
+                <form autoComplete="off" noValidate onSubmit={handleSubmit} style={{width: '90%', margin: 'auto'}}>
 
                     {/* top message */}
                     <Typography variant="h6">{currentId ? 'Editing' : 'Creating'} An Add</Typography>

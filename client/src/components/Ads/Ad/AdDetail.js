@@ -7,6 +7,7 @@ import { useParams } from 'react-router-dom'
 import { getAd } from '../../../actions/ads.js'
 import { applyForPosition } from '../../../actions/adInteract.js'
 import {Link} from 'react-router-dom'
+import styles from './styles.css'
 
 const AdDetail = () => {
 
@@ -78,7 +79,7 @@ const AdDetail = () => {
   } else {
     return (
         <Paper style={{ padding: '20px', borderRadius: '15px' }} elevation={6}>
-        <div>
+        <div className="ads-container">
           <div>
             <Typography variant="h3" >Team Name: {ad.teamName}</Typography>
             <Typography variant="h4">Sport: {ad.sport}</Typography>

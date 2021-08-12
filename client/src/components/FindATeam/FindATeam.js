@@ -100,7 +100,7 @@ const FindATeam = () => {
 
 
     return (
-        <div style={{maxWidth: '70%', margin: 'auto'}}>
+        <div style={{maxWidth: '70%', margin: 'auto', width: '90%'}}>
             <SportsList setSport={sportBack}/>
             {/* Casual or comp ? */}
             <MultiSlider setAsking={compOrCasualBack} valuesArray={["All", "Casual", "Competition"]} defaultValue={0} title={"Game Types"}/>
