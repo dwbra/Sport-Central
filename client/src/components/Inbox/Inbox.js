@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 import AllMessages from '../Message/AllMessages.js'
 import Messages from '../Message/Messages.js'
 
-const Inbox = () => {
+const Inbox = ({startingUserEmail}) => {
     const user = JSON.parse(localStorage.getItem('profile'))
 
     if(!user) {
@@ -22,7 +22,7 @@ const Inbox = () => {
             <Typography variant="h2">
             This is the Inbox Page
             </Typography>
-            <AllMessages />
+            <AllMessages startingUserEmail={startingUserEmail}/>
             </>
         )
     }
