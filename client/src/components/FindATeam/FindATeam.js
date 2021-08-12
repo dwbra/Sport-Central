@@ -121,11 +121,7 @@ const FindATeam = () => {
                     onChange={(e) => updateDistance(e)}
                     value={searchFilters.distance}
                     />
-            </Toolbar>
-            
-
-
-            <LocationFinder trigger={searchComps.locationFinderVis} lat={-33.8688} lng={151.2093} setLocation={locationBack} />
+            </Toolbar>        
 
             {(() => {
                 if (searchComps.adsVis === true) {
@@ -143,6 +139,7 @@ const FindATeam = () => {
                     )
                 }
             })()}
+            <LocationFinder trigger={searchComps.locationFinderVis} lat={-33.8688} lng={151.2093} setLocation={locationBack} />
         </div>
     );
 };

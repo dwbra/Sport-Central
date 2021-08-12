@@ -1,5 +1,5 @@
 
-const distanceCalc = (lat1, lon1, lat2, lon2) => {
+function distanceCalc(lat1, lon1, lat2, lon2) {
 
     const R = 6371e3; // metres
     const φ1 = lat1 * Math.PI/180; // φ, λ in radians
@@ -14,7 +14,8 @@ const distanceCalc = (lat1, lon1, lat2, lon2) => {
 
     const d = R * c; // in metres
 
+    //console.log("distance calc",lat1, lon1, lat2, lon2, d)
     return d
 };
 
-export default distanceCalc;
+module.exports = distanceCalc;

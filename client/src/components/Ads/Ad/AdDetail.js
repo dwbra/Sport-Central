@@ -90,7 +90,7 @@ const AdDetail = () => {
             <Typography variant="h6">Created by: {ad.name}</Typography>
             <Typography variant="h6">Skill Level: {ad.skillLevel}</Typography>
             <Typography variant="h6">Date time: {ad.gamesDateTime[0]}</Typography>
-            <Button variant="outlined" color="primary" onClick={contactCreator}>Message Organiser</Button>
+            
             <Typography gutterBottom variant="body1" component="p">{moment(ad.createdAt).fromNow()}</Typography>
             {(() => {
                 if (ad.creatorId === user?.result?._id) {
@@ -106,6 +106,7 @@ const AdDetail = () => {
                       }
                       return (
                         <div>
+                          
                             {array.map((i)=>(
                               <div key={'applicant'+i} style={{ padding: '5px', maxWidth: '400px' }}> 
                                 <Box borderRadius="borderRadius" border={1} >
@@ -145,6 +146,7 @@ const AdDetail = () => {
                     }
                     return (
                       <div>
+                        <Button variant="outlined" color="primary" onClick={contactCreator}>Message Organiser</Button>
                         {array.map((i)=>(
                         <div key={'applicant'+i} style={{ padding: '5px', maxWidth: '300px' }}> 
                             <Box borderRadius="borderRadius" border={1} >
