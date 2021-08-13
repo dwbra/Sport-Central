@@ -150,3 +150,11 @@ html,
     padding: 0 !important;
   }
 }
+
+#root > div > div > div.MuiPaper-root.MuiPaper-elevation1.MuiPaper-rounded > form > h6.MuiTypography-root.MuiTypography-h6.MuiTypography-colorError {
+  color: red !important;
+}
+
+#root > div > div > div.MuiPaper-root.MuiPaper-elevation1.MuiPaper-rounded > form > h6:nth-child(1) {
+  color: black !important;
+}
