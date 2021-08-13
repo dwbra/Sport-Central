@@ -158,3 +158,16 @@ html,
 #root > div > div > div.MuiPaper-root.MuiPaper-elevation1.MuiPaper-rounded > form > h6:nth-child(1) {
   color: black !important;
 }
+
+.MuiSlider-markLabel {
+  color: #fff !important;
+}
+
+#sport-select {
+  color: #fff !important;
+  border: #fff 1px solid;
+}
+
+#Sport {
+  color: #fff !important;
+}
