@@ -88,7 +88,7 @@ const AndMessage = ({otherUserEmail}) => {
                     </List>
                 <Box borderRadius="borderRadius" border={1} style={{padding: '10px', maxWidth: '100%', marginTop: '5px'}} >
                     <TextField id="message-input" label="Message" variant="outlined" onChange={updateTextFieldContent} value={state.textFieldContent}/>
-                    <Button onClick={(i) =>sendMessage(i)} variant="contained" color="secondary">Send</Button>
+                    <Button id="send-button" onClick={(i) =>sendMessage(i)} variant="contained" color="secondary">Send</Button>
                 </Box>
             </div>
         </div>
