@@ -82,7 +82,7 @@ const AdDetail = () => {
       )
   } else {
     return (
-        <Paper style={{ padding: '20px', borderRadius: '15px', backgroundColor: '#ededed'}} elevation={6}>
+        <Paper style={{ padding: '20px', borderRadius: '15px', backgroundColor: '#98d6c3'}} elevation={6}>
         <div className="ads-container">
           <div>
             <Typography variant="h3" >Team Name: {ad.teamName}</Typography>
