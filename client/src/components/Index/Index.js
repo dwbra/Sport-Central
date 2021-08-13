@@ -1,5 +1,5 @@
 import React from 'react'
-import {Button, Typography, Paper} from '@material-ui/core'
+import {Button, Typography} from '@material-ui/core'
 import {Link} from 'react-router-dom'
 import IndexImage from './index-image2.jpg' 
 import styles from './styles.css'

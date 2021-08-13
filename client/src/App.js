@@ -4,7 +4,6 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
-import {Container} from '@material-ui/core'
 import {useDispatch } from 'react-redux'
 import { getAds } from './actions/ads.js'
 import { getGames } from './actions/games.js'
