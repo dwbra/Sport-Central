@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {Button, Toolbar,TextField} from '@material-ui/core'
+import {Button, Toolbar,TextField, Paper} from '@material-ui/core'
 import {useDispatch } from 'react-redux'
 import { getAds } from '../../actions/ads.js'
 import LocationFinder from '../LocationFinder/LocationFinder'
@@ -101,6 +101,8 @@ const FindATeam = () => {
 
     return (
         <div style={{maxWidth: '70%', margin: 'auto', width: '90%'}}>
+        <Paper style={{width: '90%'}}>
+            <div style={{margin: '50px'}}>
             <SportsList setSport={sportBack}/>
             {/* Casual or comp ? */}
             <MultiSlider setAsking={compOrCasualBack} valuesArray={["All", "Casual", "Competition"]} defaultValue={0} title={"Game Types"}/>
@@ -139,7 +141,10 @@ const FindATeam = () => {
                     )
                 }
             })()}
+            </div>
+            </Paper>
             <LocationFinder trigger={searchComps.locationFinderVis} lat={-33.8688} lng={151.2093} setLocation={locationBack} />
+
         </div>
     );
 };
