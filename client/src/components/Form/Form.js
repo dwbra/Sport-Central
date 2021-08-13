@@ -670,7 +670,7 @@ const Form = ({currentId, setCurrentId}) => {
                                 array.push(i)
                             }
                             return (
-                                <div>
+                                <div id="set-game-location">
                                     {array.map((i)=>(
                                         <div key={'location'+i}>
                                             {/* button for location finder */}

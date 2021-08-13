@@ -20,7 +20,7 @@ const Inbox = ({startingUserEmail}) => {
         return (
             <div className="inbox-container" style={{width: '90%'}}>
             <Typography variant="h2">
-            This is the Inbox Page
+            Your Inbox
             </Typography>
             <AllMessages startingUserEmail={startingUserEmail}/>
             </div>

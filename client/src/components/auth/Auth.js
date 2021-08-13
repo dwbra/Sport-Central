@@ -87,7 +87,7 @@ const Auth = () => {
     }
 
     return (
-        <div>
+        <div id="sign-in-form">
             <Container component="main" maxWidth="xs" >
                 <Paper elevation={3}>
                     <Avatar>
@@ -114,7 +114,7 @@ const Auth = () => {
                             clientId={CONFIG.GOOGLE_CLIENT_ID}
                             render={(renderProps) => (
                             <Button 
-                            color="primary" 
+                            color="secondary" 
                             fullWidth 
                             onClick={renderProps.onClick} 
                             disabled={renderProps.disabled} 
