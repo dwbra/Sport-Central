@@ -132,4 +132,21 @@ html,
   #root > div > div > div.MuiPaper-root.MuiPaper-elevation1.MuiPaper-rounded {
     padding: 15px 40px 15px 40px !important;
   }
+  .login-container{
+    position: absolute;
+    width: 100%;
+  }
+  .image-container img {
+    width: 375px;
+    margin: 0;
+    padding: 0;
+  }
+  .page {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .container {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
 }
