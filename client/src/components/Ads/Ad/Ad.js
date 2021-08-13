@@ -27,7 +27,7 @@ const Ad = ( { ad, setCurrentId, distance} ) => {
     return (
 
         <ButtonBase onClick={openAd} style={{width: '100%'}}>
-        <Card style={{backgroundColor: '#ededed', width: '100%'}}>
+        <Card style={{backgroundColor: '#98d6c3', width: '100%'}}>
             <div className="card-items">
                 <Typography className="card-tiles" variant="h4">{ad.teamName}</Typography>
                 <Typography className="card-tiles" variant="h6">{ad.sport}</Typography>

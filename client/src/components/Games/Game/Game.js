@@ -9,7 +9,7 @@ const Game = ( {game, setCurrentId} ) => {
     // Returns the game with the game details, with the game object being passed as a destructured variable in the Game object
     return (
         <div style={{width: '100%'}}>
-            <Card style={{backgroundColor: '#ededed'}} className="card-items">
+            <Card style={{backgroundColor: '#98d6c3'}} className="card-items">
                 <div className="card-items">
                     <Typography variant="h4">{game.teamName}</Typography>
                     <Typography variant="h6">{game.sport}</Typography>
