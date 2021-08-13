@@ -105,7 +105,7 @@ html,
 
 #root > div > div > div.MuiPaper-root.MuiPaper-elevation1.MuiPaper-rounded {
   width: 100% !important;
-  padding: 25px 25px 25px 25px !important;
+  padding: 15px 25px 15px 25px !important;
 }
 
 .login-container {
@@ -128,5 +128,8 @@ html,
     top: 20% !important;
     left: 5% !important;
     margin-right: 10px !important;
+  }
+  #root > div > div > div.MuiPaper-root.MuiPaper-elevation1.MuiPaper-rounded {
+    padding: 15px 40px 15px 40px !important;
   }
 }

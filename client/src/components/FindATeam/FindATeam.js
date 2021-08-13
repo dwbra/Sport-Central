@@ -113,7 +113,7 @@ const FindATeam = () => {
 
             <Toolbar>
 
-                <Button onClick={setLocationFinderVis} variant="contained" color="secondary">Set Search Location</Button>
+                <Button id="set-search-location" onClick={setLocationFinderVis} variant="contained" color="secondary">Set Search Location</Button>
                 <TextField 
                     style={{margin: '20px'}}
                     id="Search-Distance" 
