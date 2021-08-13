@@ -1,12 +1,11 @@
 import React from 'react'
-import {Grid, Paper, Typography, Button} from '@material-ui/core'
+import {Grid, Typography} from '@material-ui/core'
 import Game from './Game/Game.js'
 import {useSelector} from 'react-redux'
 
 const Games = ( {setCurrentId} ) => {
     // UseSelector from redux to set the games object as the current state of the reducer object
     const  { games }  = useSelector((state) => state.games)
-    const user = JSON.parse(localStorage.getItem('profile'))
 
     // Returns the grid of all games, with the game passed on as a 
     return (

@@ -1,8 +1,7 @@
-import React, {useState, useEffect, useCallback} from 'react';
+import React, {useState, useEffect} from 'react';
 import Messages from './Messages.js';
 import {useSelector} from 'react-redux'
 import { TextField, Button, Box} from '@material-ui/core'
-import { useHistory } from 'react-router-dom'
 
 const AllMessages = ({startingUserEmail}) => {
     

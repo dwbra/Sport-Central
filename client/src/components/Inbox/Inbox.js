@@ -2,7 +2,6 @@ import React from 'react'
 import {Button, Typography, Paper} from '@material-ui/core'
 import {Link} from 'react-router-dom'
 import AllMessages from '../Message/AllMessages.js'
-import Messages from '../Message/Messages.js'
 
 const Inbox = ({startingUserEmail}) => {
     const user = JSON.parse(localStorage.getItem('profile'))

@@ -2,7 +2,6 @@ import React from 'react'
 import {Paper, Typography, Grid} from '@material-ui/core'
 import {useSelector} from 'react-redux'
 import Ad from '../Ads/Ad/Ad.js'
-import Games from '../Games/Games.js'
 import Game from '../Games/Game/Game.js'
 import styles from './styles.css'
 
